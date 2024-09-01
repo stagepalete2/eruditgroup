@@ -53,3 +53,4 @@ venv.bak/
 
 docker/
 db.sqlite3
+staticfiles/
