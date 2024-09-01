@@ -16,10 +16,12 @@
 </head>
 <body>
     <div class="layout-wrapper">
-
-        {% block 'content' %}
-        {% endblock %}
-        
+        {% include 'shared/header.html' %}
+        <div class="container content-place">
+            {% block 'content' %}
+            {% endblock %}
+        </div>
+        {% include 'shared/footer.html' %}
     </div>
 </body>
 </html>
