@@ -1,0 +1,20 @@
+{% load static %}
+<div class="container-fluid my-3">
+    <h1 class="text-center">НАШИ УЧИТЕЛЯ</h1>
+    <div class="row justify-content-between align-items-center">
+        <div class="col-md-4">
+            <h1>Знаем, как учить</h2>
+
+            <p>Наши преподаватели расскажут, как подготовиться к экзаменам, помогут справиться со сложным заданием и победить на олимпиаде</p>
+
+            <p>Расскажут про подводные камни экзаменов и самые частые ошибки, и объяснят, как их избежать</p>
+        </div>
+        <div class="col-md-7">
+            <div class="row">
+                {% include 'blocks/home/teacher.html' %}
+                {% include 'blocks/home/teacher.html' %}
+                {% include 'blocks/home/teacher.html' %}
+            </div>
+        </div>
+    </div>
+</div>

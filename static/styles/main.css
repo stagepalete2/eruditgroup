@@ -11,3 +11,33 @@ html, body {
     flex-direction: column;
     justify-content: space-between;
 }
+
+
+.divider{
+    height: 3px;
+    background-color: grey;
+    margin: 3px 0;
+}
+
+@media all and (min-width: 992px) { 
+    .dropdown-large{
+        min-width:800px!important;
+    }
+ } 
+
+ .asteriskField {
+    display: none;
+}
+
+.circle {
+    width: 200px; /* adjust the size as needed */
+    height: 200px;
+    background-color: #add8e6; /* light blue background */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}

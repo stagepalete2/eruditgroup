@@ -5,5 +5,18 @@
 {% endblock %}
 
 {% block 'content' %}
-Home page
+<!-- {% include 'components/divider.html' %} -->
+<div class="container">
+    {% include 'components/home/banner.html' %}
+    {% include 'components/home/categories_rounds.html' %}
+    {% include 'components/divider.html' %}
+    {% include 'components/home/teachers.html' %}
+    {% include 'components/divider.html' %}
+    {% include 'components/home/study_formats.html' %}
+    {% include 'components/divider.html' %}
+    {% include 'components/home/review.html' %}
+    {% include 'components/home/request.html' %}
+    {% include 'components/divider.html' %}
+    {% include 'components/home/license.html' %}
+</div>
 {% endblock %}
