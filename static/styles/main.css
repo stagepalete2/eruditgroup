@@ -41,3 +41,12 @@ html, body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
 }
+
+.btn-eruditgroup-outline-prime {
+    border: 1px solid #A8D0E6!important;
+}
+
+
+input[type="radio"]:checked + .btn-eruditgroup-outline-prime {
+    background-color: #A8D0E6 !important;
+}
