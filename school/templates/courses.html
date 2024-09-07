@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'seo' %}
+{% endblock %}
+
+{% block 'content' %}
+<!-- {% include 'components/divider.html' %} -->
+<div class="container">
+    <div class="container-fluid">
+        {% include 'components/courses/banner.html' %}
+        {% include 'components/courses/catalog.html' %}
+    </div>
+</div>
+{% endblock %}

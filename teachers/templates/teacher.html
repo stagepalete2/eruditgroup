@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'seo' %}
+{% endblock %}
+
+{% block 'title' %}
+    <title>Teacher | </title>
+{% endblock %}
+
+{% block 'content' %}
+    <div class="container">
+        <section name="teacher" class="container-fluid">
+            <section name="info">
+                <h1>Репетитор по математике</h1>
+                <div class="d-flex flex-row flex-wrap gap-2">
+                    <h4><span class="badge bg-secondary">Математика</span></h4>
+                    <h4><span class="badge bg-secondary">ЕНТ</span></h4>
+                    <h4><span class="badge bg-secondary">Репетитор</span></h4>
+                </div>
+            </section>
+            <section name="teacher_info">
+                <div class="rounded p-4 my-3" style="border: 1px solid #FF6666;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1 class="text-center">Асем Алиева</h1>
+                            <p>Преподователь со стажем более 40 лет на двух языках (казахский и русский), обучение уроком математики в средних и старших классах, занималась подготовкой выпускников к ЕНТ.</p>
+                            <p>Мои ученики получали высокие баллы по математике и образовательные гранты. Устраняю пробелы в знании, готовлю к тестам и экзаменам, к ЕНТ, для поступления в РФМШ, БИЛ,,НИШ. Все мои ученики, закончившие 11 класс поступили на грант</p>
+                            <p>2100+ активных учеников проходят курсы прямо сейчас</p>
+                            <h5 class="text-end">«Моя задача как преподавателя — поверить в ученика и помочь ему поверить в себя»</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="badge bg-secondary text-break">Стаж более 10 лет</span>
+                            <span class="badge bg-secondary text-break">Закончила НУ</span>
+                            <span class="badge bg-secondary text-break">Любимчик учеников</span>
+                            <span class="badge bg-secondary text-break">Научимся легко решать нестандартные задачи</span>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="{% static 'test_images/2208_w048_n005_262b_p1_262 3.svg' %}" alt="" class="d-block w-100">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        {% include 'components/request.html' %}
+    </div>
+{% endblock %}

@@ -24,7 +24,7 @@ class HomePage(TemplateView):
         return context
     
 class CatalogPage(ListView):
-    template_name = 'catalog.html'
+    template_name = 'courses.html'
     model = Course
     context_object_name = 'Courses'
     

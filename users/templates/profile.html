@@ -5,10 +5,114 @@
 {% endblock %}
 
 {% block 'content' %}
-<!-- {% include 'components/divider.html' %} -->
 <div class="container">
     <div class="container-fluid">
-    
+        <div class="my-3">
+            <h1 class="text-center">Личный Кабинет</h1>
+            <div class="container row justify-content-center align-items-center">
+                <div class="col-md-6" style="border-right: 1px solid #A8D0E6;">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="{% static 'test_images/profile1.svg' %}" alt="" class="d-block rounded-circle" style="width: 150px; height: 150px">
+                        </div>
+                        <div class="col-md-8">
+                            <h2>Фамилия Имя <span class="badge bg-secondary">Родитель</span></h2>
+                            <h4>8 708 549 2937</h4>
+                            <h4>admin@admin.com</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-center">Дети</h2>
+                    <ul class="list-group list-group-flush px-4">
+                        <li class="list-group-item"><a href="" class="text-decoration-none text-dark">Айгерим Иманова <span class="badge bg-secondary">Ребенок</span></a></li>
+                        <li class="list-group-item"><a href="" class="text-decoration-none text-dark">Диас Иманов <span class="badge bg-secondary">Ребенок</span></a></li>
+                        <li class="list-group-item"><a href="" class="text-decoration-none text-dark">Саида Иманова <span class="badge bg-secondary">Ребенок</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="my-3">
+            <div class="rounded p-4" style="border: 1px solid #A8D0E6;">
+                <h3>Айгерим Иманова</h2>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Курс</th>
+                            <th scope="col">Преподователь</th>
+                            <th scope="col">Расписание</th>
+                            <th scope="col">Дествие</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Математика</td>
+                            <td><a href="#" class="text-dark text-decoration-none">Асем Алиева</a> <span class="badge bg-secondary">Учитель</span></td>
+                            <td>Вт - 16:00, Чт - 12:00</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button class="btn w-100" style="border:1px solid #FF6666;">Посмотреть оценки</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn w-100" style="border:1px solid #FF6666;">Оплатить курс</button>
+                                    </div>
+                                </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Математика</td>
+                            <td><a href="#" class="text-dark text-decoration-none">Асем Алиева</a> <span class="badge bg-secondary">Учитель</span></td>
+                            <td>Вт - 16:00, Чт - 12:00</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button class="btn w-100" style="border:1px solid #FF6666;">Посмотреть оценки</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn w-100" style="border:1px solid #FF6666;">Оплатить курс</button>
+                                    </div>
+                                </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Математика</td>
+                            <td><a href="#" class="text-dark text-decoration-none">Асем Алиева</a> <span class="badge bg-secondary">Учитель</span></td>
+                            <td>Вт - 16:00, Чт - 12:00</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button class="btn w-100" style="border:1px solid #FF6666;">Посмотреть оценки</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn w-100" style="border:1px solid #FF6666;">Оплатить курс</button>
+                                    </div>
+                                </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th class="border-0"></th>
+                            <td class="border-0"></td>
+                            <td class="border-0"></td>
+                            <td class="border-0"></td>
+                            <td class="border-0">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn w-100" style="background-color:#FF6666;">+ Добавить курс</button>
+                                    </div>
+                                </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
