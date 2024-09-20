@@ -1,0 +1,61 @@
+{% extends 'platform_base.html' %}
+{% load static %}
+
+{% block 'seo' %}
+{% endblock %}
+
+{% block 'title' %}
+<title>Course |</title>
+{% endblock %}
+
+
+{% block 'content' %}
+    <div class="container-fluid">
+        <nav class="px-2 m-2 border rounded" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb m-2">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Course</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Cloud Computing</li>
+            </ol>
+        </nav>
+
+        <section name="user_grades" class="p-2 m-2 border rounded">
+            <h3 class="my-2">User Grades - Yedige Mazhit</h3>
+
+            <table class="table w-100">
+                <thead>
+                  <tr>
+                    <th scope="col">Assignment item</th>
+                    <th scope="col">Grade</th>
+                    <th scope="col">Range</th>
+                    <th scope="col">Percentage</th>
+                    <th scope="col">Feedback</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"><a href="" class="fst-italic text-dark">Task 1</a></th>
+                    <td>8</td>
+                    <td>0 - 10</td>
+                    <td>80%</td>
+                    <td>Not bad!</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="" class="fst-italic text-dark">Homework</a></th>
+                    <td>5</td>
+                    <td>0 - 5</td>
+                    <td>100%</td>
+                    <td>Very Good!</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Course Total<br><span class="fw-lighter fst-italic">Includes Empty grades</span></th>
+                    <td class="fw-bold">90</td>
+                    <td class="fw-bold">0 - 1   00</td>
+                    <td class="fw-bold">90%</td>
+                    <td class="fw-bold"></td>
+                  </tr>
+                </tbody>
+              </table>
+        </section>
+    </div>
+{% endblock %}

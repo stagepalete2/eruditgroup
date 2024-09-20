@@ -1,0 +1,93 @@
+{% extends 'platform_base.html' %}
+{% load static %}
+
+{% block 'seo' %}
+{% endblock %}
+
+{% block 'title' %}
+<title>Course |</title>
+{% endblock %}
+
+
+{% block 'content' %}
+    <div class="container-fluid">
+        <nav class="px-2 m-2 border rounded" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb m-2">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Course</a></li>
+                <li class="breadcrumb-item"><a href="#">Cloud Computing</a></li>
+                <li class="breadcrumb-item"><a href="#">Lesson 1</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Examine NAT on a Wireless Router</li>
+            </ol>
+        </nav>
+
+        <section name="assignment" class="p-2 m-2 border rounded">
+            <section name="assignment_title" class="px-2">
+                <h2>Examine NAT on a Wireless Router</h2>
+                <p class="m-0"><span class="fw-bold">Opened: </span> Tuesday, 17 September 2024, 12:00 AM</p>
+                <p><span class="fw-bold">Due: </span> Tuesday, 18 September 2024, 12:00 AM</p>
+            </section>
+            <hr>
+            <section name="assignment_body" class="p-2">
+                <div class="row">
+                    <section class="col-md-4">
+                        <p class="p-3 border rounded"><span class="badge bg-secondary my-2">Teacher</span><br>Dear, Students. In this assignment you have to create something like this...</p>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col-md-4">
+                        <h4>Attached materials</h4>
+                        <a href="" class="btn btn-outline-secondary"><i class="fa-regular fa-file"></i> Lesson1.ppt</a>
+                    </section>
+                </div>
+            </section>
+            <section name="assignment_status" class="mt-4 p-2">
+                <h4>Submission status</h4>
+                <div class="row">
+                    <section class="col-md-4 border rounded mx-2 p-3">
+                        <table class="table">
+                            <tbody>
+                              <tr>
+                                <th scope="row" class="table-active">Submission status</th>
+                                <td>No attempt</td>
+                              </tr>
+                              <tr>
+                                <th scope="row" class="table-active">Grading status</th>
+                                <td>Not graded</td>
+                              </tr>
+                              <tr>
+                                <th scope="row" class="table-active">Time remaining</th>
+                                <td>3 days, 22 hours</td>
+                              </tr>
+                              <tr>
+                                <th scope="row" class="table-active">Feedback</th>
+                                <td>No feedback</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </section>
+                    <section class="col-md-4 border rounded mx-2 p-3">
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                  Add Submission |<span class="badge bg-secondary">No attempts</span>
+                                </button>
+                              </h2>
+                              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <div class="input-group mb-3">
+                                        <input type="file" class="form-control" id="inputGroupFile02">
+                                        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                                    </div>
+                                    <button class="btn btn-outline-dark">Submit</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </section>
+                </div>
+            </section>
+        </section>
+    </div>
+{% endblock %}

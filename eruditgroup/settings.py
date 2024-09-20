@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'users',
     'school',
     'teachers',
+    'eruditplatform',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,30 @@
+{% load static %}
+{% load django_bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block 'seo' %}
+    {% endblock %}
+
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <script src="https://kit.fontawesome.com/4495d6df4b.js" crossorigin="anonymous"></script>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    
+    {% block 'title' %}
+    {% endblock %}
+</head>
+<body>
+    <div class="layout-wrapper">
+        {% include 'shared/platform_header.html' %}
+        <div class="content-place">
+            {% block 'content' %}
+            {% endblock %}
+        </div>
+        {% include 'shared/platform_footer.html' %}
+    </div>
+</body>
+</html>

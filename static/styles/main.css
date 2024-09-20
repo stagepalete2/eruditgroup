@@ -9,9 +9,18 @@ html, body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
+.content-place {
+    flex-grow: 1; /* Ensures the content fills the space between the header and footer */
+    padding: 20px; /* Optional: Adjust padding for content inside */
+    box-sizing: border-box;
+}
+
+/* Ensure footer stays at the bottom */
+.layout-wrapper > :last-child {
+    margin-top: auto;
+}
 
 .divider{
     height: 3px;

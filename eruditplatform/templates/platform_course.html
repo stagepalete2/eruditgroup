@@ -1,0 +1,68 @@
+{% extends 'platform_base.html' %}
+{% load static %}
+
+{% block 'seo' %}
+{% endblock %}
+
+{% block 'title' %}
+<title>Course |</title>
+{% endblock %}
+
+
+{% block 'content' %}
+<div class="container-fluid">
+    <nav class="px-2 m-2 border rounded" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb m-2">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Course</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cloud Computing</li>
+        </ol>
+    </nav>
+
+    <section name="course_title" class="m-2 p-2 border rounded">
+        <h1>Cloud Computing</h1>
+        <h3 class="fw-lighter">Aitmukhanbetova Elvira</h3>
+    </section>
+
+    <section name="course" class="m-2 p-2 border rounded">
+        <section name="course_content" class="p-2">
+            <h3>Course content</h3>
+            <section name="hot-links" class="d-flex flex-column jsutify-content-start align-items-start gap-2">
+                <a href="" class="btn btn-secondary"><i class="fa-solid fa-check"></i> Attendence</a>
+                <a href="" class="btn btn-secondary"><i class="fa-solid fa-graduation-cap"></i> Grades</a>
+            </section>
+            <hr>
+        </section>
+        <section name="lesson1" class="p-2">
+            <h3>Lesson 1</h3>
+            
+            <section name="lesson_content" class="p-2 row align-items-center">
+                <div class="col-md-auto">
+                    <a href="" class="btn btn-success px-3"><i class="fa-solid fa-list-check"></i>  Task 1</a>
+                </div>
+                <div class="col-md-auto">
+                    <span class="badge bg-secondary">DUE TO Friday, 29 September, 2024. 23:59</span>
+                </div>
+            </section>
+            <section name="lesson_content" class="p-2 row align-items-center">
+                <div class="col-md-auto">
+                    <a href="" class="btn btn-outline-dark px-3"><i class="fa-solid fa-list-check"></i>  Homework</a>
+                </div>
+                <div class="col-md-auto">
+                    <span class="badge bg-secondary">DUE TO Friday, 29 September, 2024. 23:59</span>
+                    <span class="badge bg-danger">Do not forger!</span>
+                </div>
+            </section>
+            <section name="lesson-materials" class="p-2">
+                <a href="" class="btn btn-outline-secondary"><i class="fa-regular fa-file"></i> Lesson1.ppt</a>
+            </section>
+
+            <hr class="m-0">
+        </section>
+        <section name="lesson2" class="p-2">
+            <h3>Lesson 2</h3>
+            
+        </section>
+    </section>
+</div>
+{% endblock %}
