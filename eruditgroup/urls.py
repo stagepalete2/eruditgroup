@@ -24,4 +24,5 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('teachers/', include('teachers.urls')),
     path('platform/', include('eruditplatform.urls')),
+    path('blog/', include('blog.urls')),
 ]

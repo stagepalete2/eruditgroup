@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'seo' %}
+{% endblock %}
+
+{% block 'title' %}
+    <title>Blog | </title>
+{% endblock %}
+
+{% block 'content' %}
+    <div class="container-fluid m-0 p-0">
+        <section class="container">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <section name="main-article" class="btn p-2 rounded text-start">
+                        <div class="row p-2">
+                            <img class="col-md-11 rounded" src="https://picsum.photos/400" alt="">
+                            <h3 class="col-md-6">Полюбить красоту мира: 8 книжных новинок мира</h3>
+                            <p class="m-0"><span class="badge bg-secondary">Культ</span></p>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-6">
+                    <section name="other-articles" class="row rounded">
+                        <div class="col-md-4">
+                            <div class="row p-2">
+                                <img class="col-md-12 rounded" src="https://picsum.photos/400" alt="">
+                                <h5 class="col-md-12">Полюбить красоту мира: 8 книжных новинок мира</h5>
+                                <p class="m-0"><span class="badge bg-secondary">Культ</span></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row p-2">
+                                <img class="col-md-12 rounded" src="https://picsum.photos/400" alt="">
+                                <h5 class="col-md-12">Полюбить красоту мира: 8 книжных новинок мира</h5>
+                                <p class="m-0"><span class="badge bg-secondary">Культ</span></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row p-2">
+                                <img class="col-md-12 rounded" src="https://picsum.photos/400" alt="">
+                                <h5 class="col-md-12">Полюбить красоту мира: 8 книжных новинок мира</h5>
+                                <p class="m-0"><span class="badge bg-secondary">Культ</span></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row p-2">
+                                <img class="col-md-12 rounded" src="https://picsum.photos/400" alt="">
+                                <h5 class="col-md-12">Полюбить красоту мира: 8 книжных новинок мира</h5>
+                                <p class="m-0"><span class="badge bg-secondary">Культ</span></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row p-2">
+                                <img class="col-md-12 rounded" src="https://picsum.photos/400" alt="">
+                                <h5 class="col-md-12">Полюбить красоту мира: 8 книжных новинок мира</h5>
+                                <p class="m-0"><span class="badge bg-secondary">Культ</span></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row p-2">
+                                <img class="col-md-12 rounded" src="https://picsum.photos/400" alt="">
+                                <h5 class="col-md-12">Полюбить красоту мира: 8 книжных новинок мира</h5>
+                                <p class="m-0"><span class="badge bg-secondary">Культ</span></p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <hr>
+
+            <section class="category_other">
+                <h1 class="text-uppercase">популярные материалы</h1>
+                <section name="articles_other" class="row mx-auto">
+                    {% for i in '123' %}
+                    <div class="col-md-3">
+                        <div class="row p-2 justify-content-center">
+                            <img class="col-md-11 rounded" src="https://picsum.photos/400" alt="">
+                            <h5 class="col-md-11">Полюбить красоту мира: 8 книжных новинок мира</h5>
+                            <p class="col-md-11 m-0"><span class="badge bg-secondary">Культ</span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row p-2 justify-content-center">
+                            <img class="col-md-11 rounded" src="https://picsum.photos/400" alt="">
+                            <h5 class="col-md-11">Полюбить красоту мира: 8 книжных новинок мира</h5>
+                            <p class="col-md-11 m-0"><span class="badge bg-secondary">Культ</span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row p-2 justify-content-center">
+                            <img class="col-md-11 rounded" src="https://picsum.photos/400" alt="">
+                            <h5 class="col-md-11">Полюбить красоту мира: 8 книжных новинок мира</h5>
+                            <p class="col-md-11 m-0"><span class="badge bg-secondary">Культ</span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row p-2 justify-content-center">
+                            <img class="col-md-11 rounded" src="https://picsum.photos/400" alt="">
+                            <h5 class="col-md-11">Полюбить красоту мира: 8 книжных новинок мира</h5>
+                            <p class="col-md-11 m-0"><span class="badge bg-secondary">Культ</span></p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="row">
+                        <a href="" class="col-md-4 btn btn-outline-dark mx-auto">Показать еще</a>
+                    </div>
+                </section>
+            </section>
+            
+            <hr>
+
+            {% include 'components/request.html' %}
+
+
+            <hr>
+
+            <section class="category_other">
+                <h1 class="text-uppercase">популярные лайфхаки</h1>
+                <section name="articles_other" class="row mx-auto">
+                    {% for i in '123' %}
+                    <div class="col-md-3">
+                        <div class="row p-2 justify-content-center">
+                            <img class="col-md-11 rounded" src="https://picsum.photos/400" alt="">
+                            <h5 class="col-md-11">Полюбить красоту мира: 8 книжных новинок мира</h5>
+                            <p class="col-md-11 m-0"><span class="badge bg-secondary">Культ</span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row p-2 justify-content-center">
+                            <img class="col-md-11 rounded" src="https://picsum.photos/400" alt="">
+                            <h5 class="col-md-11">Полюбить красоту мира: 8 книжных новинок мира</h5>
+                            <p class="col-md-11 m-0"><span class="badge bg-secondary">Культ</span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row p-2 justify-content-center">
+                            <img class="col-md-11 rounded" src="https://picsum.photos/400" alt="">
+                            <h5 class="col-md-11">Полюбить красоту мира: 8 книжных новинок мира</h5>
+                            <p class="col-md-11 m-0"><span class="badge bg-secondary">Культ</span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row p-2 justify-content-center">
+                            <img class="col-md-11 rounded" src="https://picsum.photos/400" alt="">
+                            <h5 class="col-md-11">Полюбить красоту мира: 8 книжных новинок мира</h5>
+                            <p class="col-md-11 m-0"><span class="badge bg-secondary">Культ</span></p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="row">
+                        <a href="" class="col-md-4 btn btn-outline-dark mx-auto">Показать еще</a>
+                    </div>
+                </section>
+            </section>
+
+        </section>
+    </div>
+{% endblock %}
