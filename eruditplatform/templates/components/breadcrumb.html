@@ -1,0 +1,30 @@
+{% load platform_filters %}
+
+
+{% if url|length > 1 %}
+<nav class="px-2 m-2 border rounded" style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+    <ol class="breadcrumb m-2">
+        {% for uri in url %}
+            {% if uri == 'platform' %}
+            <li class="breadcrumb-item">
+                <a href="{% url 'platform_home' %}">
+                    <span itemprop="name">Home</span>
+                </a>
+                <meta itemprop="position" content="1">
+            </li>
+            {% elif uri != 'platform' and uri != 'news' %}
+            <li class="breadcrumb-item {% if forloop.last %}active{%endif%}" {% if forloop.last %}aria-current="page"{% endif %}>
+                {% if not forloop.last %}
+                    <a href="/{{ url|url_slicer:uri }}/">    
+                        <span itemprop="name">{{uri}}</span>
+                    </a>
+                {% else %}
+                    <span itemprop="name">{{uri}}</span>
+                {% endif %}
+                <meta itemprop="position" content="{{forloop.counter}}">
+            </li>
+            {% endif %}
+        {% endfor %}
+    </ol>
+</nav>
+{% endif %}

@@ -1,0 +1,14 @@
+{% load static %}
+
+<section class="border rounded m-2 p-3">
+    <div class="row align-items-center">
+        <div class="col-md-2 d-flex flex-row align-items-center gap-2">
+            <img class="" style="width: 50px;" src="{% static 'test_images/profile1.svg' %}" alt="">
+            <div class="">{{new.author.name}} {{new.author.lastname}}<span class="badge bg-primary mx-2">Admin</span><br>{{ new.published }}</div>
+        </div>
+    </div>
+    <div class="container-fluid mt-2">
+        <p><a class="text-decoration-none text-dark" href="{% url 'platform_news' new.news_slug %}"><b>{{new.title}}</b></a></p>
+        {{ new.content|safe }}
+    </div>
+</section>

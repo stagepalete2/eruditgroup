@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 from django.template.defaultfilters import slugify
+from phone_field import PhoneField
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -49,13 +50,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(unique=True, max_length=150, blank=True)
     name = models.CharField(max_length=150)
     lastname = models.CharField(max_length=150, blank=True, null=True, default='')
-    phone = models.CharField(max_length=50)
+    # phone = models.CharField(max_length=50)
+    phone = PhoneField(unique=True)
     date_of_birth = models.DateField(blank=True, null=True)
     picture = models.ImageField(blank=True, null=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
     last_login = models.DateTimeField(null=True)
+    user_type = models.CharField(choices={'Учитель' : 'Учитель', 'Обучающийся' : 'Обучающийся', 'Родитель' : 'Родитель', 'Ребенок' : 'Ребенок'}, max_length=50)
+    user_child = models.ManyToManyField('users.User', blank=True, null=True)
     
     slug = models.SlugField()
 

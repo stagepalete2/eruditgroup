@@ -34,6 +34,8 @@ class LogOutPage(LogoutView):
 class Profile(DetailView):
     template_name = 'profile.html'
     model = User
+    slug_field = 'username' 
+    slug_url_kwarg = 'username'
     context_object_name = 'user'
     
     def get_queryset(self):

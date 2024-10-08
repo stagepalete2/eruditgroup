@@ -1,0 +1,13 @@
+{% load static %}
+
+<section name="lesson1" class="p-2">
+    <h3> {{title}} </h3>
+    
+    {% include 'blocks/lesson_detail.html' with detail=detail %}
+
+    {% include 'blocks/lesson_content.html' with assignments=assignments %}
+    
+    {% include 'blocks/lesson_attachments.html' with attachments=attachments %}
+
+    <hr class="m-0">
+</section>

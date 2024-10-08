@@ -1,6 +1,7 @@
 {% extends 'platform_base.html' %}
 {% load static %}
 
+
 {% block 'seo' %}
 {% endblock %}
 
@@ -10,12 +11,7 @@
 
 {% block 'content' %}
 <div class="container-fluid">
-    <nav class="px-2 m-2 border rounded" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-        <ol class="breadcrumb m-2">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-        </ol>
-    </nav>
+    {% include 'components/breadcrumb.html' with url=url full=full_uri%}
 
     <section name="dashboard" class="p-2">
         <div class="row">
@@ -67,25 +63,8 @@
                 
             </div>
             <div class="col-md-3">
-                <div class=" border rounded p-2">
-                    <h4>Deadlines Timeline</h4>
-                    <hr>
-                    <div class="task border rounded p-2">
-                        <a class="text-decoration-none text-dark" href="">
-                            <div class="d-flex flex-row align-items-center">
-                                <p><i class="fas fa-tasks mx-2"></i>
-                                DUE TO Friday, 22 October, 17:00</p>
-                            </div>
-                            <p class="mx-2 my-0 text-primary">Cloud computing | Aitmukhanbetova Elvira</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="d-flex flex-column border rounded p-2 mt-2">
-                    <h4>Hot links</h4>
-                    <hr>
-                    <a href="">How to submit assignment</a>
-                    <a href="">How to attach files to submitions</a>
-                </div>
+                {% include 'components/deadlines.html' %}
+                {% include 'components/hot_links.html' with hot_links=hot_links %}
             </div>
         </div>
     </section>

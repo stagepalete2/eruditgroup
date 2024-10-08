@@ -5,9 +5,6 @@ from django.views.generic import TemplateView, ListView, DetailView, CreateView
 
 from .models import *
 
-# Create your views here.
-def home(request):
-    return render(request, template_name='home.html')
 
 class HomePage(TemplateView):
     template_name = 'home.html'
@@ -28,6 +25,7 @@ class CatalogPage(ListView):
     model = Course
     context_object_name = 'Courses'
     
+    
     def get_queryset(self) -> QuerySet[Any]:
         queryset = super().get_queryset()
         return queryset
@@ -35,11 +33,11 @@ class CatalogPage(ListView):
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         
-        context = {
-            'CourseCategories' : CourseCategory.objects.all(),
-            'CourseSubcategories' : CourseSubcategory.objects.all(),
-            'Courses' : Course.objects.all(), 
-        }
+        # context = {
+        #     'CourseCategories' : CourseCategory.objects.all(),
+        #     'CourseSubcategories' : CourseSubcategory.objects.all(),
+        #     'Courses' : Course.objects.all(), 
+        # }
         
         return context
     
@@ -48,7 +46,8 @@ class CoursePage(DetailView):
     template_name = 'course.html'
     model = Course
     context_object_name = 'Course'
-    
+    slug_field = 'course_slug' 
+    slug_url_kwarg = 'course_slug'
     
     def get_queryset(self) -> QuerySet[Any]:
         queryset = super().get_queryset()

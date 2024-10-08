@@ -1,0 +1,11 @@
+{% load static %}
+
+<div class="row p-2 justify-content-center">
+    <img class="col-md-11 rounded" src="https://picsum.photos/400" alt="">
+    <h5 class="col-md-11">{{ Article.article_title }}</h5>
+    <p class="col-md-11 m-0">
+        {% for tag in Article.tags.all %}
+            <span class="badge bg-secondary mx-1">{{ tag }}</span>
+        {% endfor %}
+    </p>
+</div>

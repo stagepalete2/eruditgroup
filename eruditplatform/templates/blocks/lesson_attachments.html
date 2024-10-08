@@ -1,0 +1,7 @@
+{% load static %}
+
+{% for attachment in attachments %}
+<section name="lesson-materials" class="p-2">
+    <a href="{{ attachment.file.url }}" class="btn btn-outline-secondary"><i class="fa-regular fa-file"></i> {{attachment.file.filename}}</a>
+</section>
+{% endfor %}

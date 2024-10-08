@@ -15,21 +15,25 @@
             <div class="col-md-10">
                 <section name="title">
                     <div class="d-flex flex-row flex-wrap gap-2 py-2 align-items-center">
-                        <p class="m-0"><span class="badge bg-secondary">Инструкция по выживанию</span></p>
-                        <p class="m-0">08.09.2024</p>
+                        <p class="m-0 mx-1">
+                            {% for tag in Article.tags.all %}
+                            <span class="badge bg-secondary">{{ tag }}</span>
+                            {% endfor %}
+                        </p>
+                        <p class="m-0">{{ Article.published }}</p>
                     </div>
-                    <h1 class="py-2">Как выбрать школу для первоклассника</h1>
+                    <h1 class="py-2">{{ Article.article_title }}</h1>
                     <h4 class="fw-light py-2">
-                        В начальной школе закладывается фундамент образования ребёнка, базовая грамотность по основным предметам и отношение к учёбе. Рассказываем, как выбрать школу и на что ориентироваться.
+                        {{ Article.article_small_description }}    
                     </h4>
                     <div class="row gap-1 align-items-center w-75 py-2">
                         <img class="col-md-1 rounded-circle" src="{% static 'test_images/profile1.svg' %}" alt="">
-                        <a class="col-md-5 text-decoration-none text-dark fst-italic" href="">Amageldieva Shynar <span class="badge bg-primary mx-2">Author</span></a>
+                        <a class="col-md-5 text-decoration-none text-dark fst-italic" href="">{{ Article.article_author.name }} {{ Article.article_author.lastname }} <span class="badge bg-primary mx-2">Author</span></a>
                     </div>
                 </section>
                 <hr>
                 <section name="article-content">
-                    <p class="py-3">
+                    <!-- <p class="py-3">
                         <img class="rounded w-100" src="{% static 'test_images/test_article_image_banner.webp' %}" alt="">
                     </p>
                     <p class="fw-light h4 py-3">
@@ -49,7 +53,8 @@
                     <p class="fw-light h4 py-3">Согласно Федеральному закону «Об образовании в Российской Федерации» дети поступают в первый класс в возрасте 6,5–8 лет. Уровень психологической готовности, как и учебной, может быть разным: кто-то в пять хочет сидеть за партой, а кто-то и в семь не знает буквы.</p>
                     <p class="fw-light h4 py-3">Если у ребёнка ограниченные возможности здоровья или тяжёлая ситуация со здоровьем, то к выбору школы нужно отнестись с особым вниманием. В первом случае есть четыре варианта обучения: обычная или коррекционная школа, семейное или надомное образование. Во втором — обычная школа, семейное или надомное обучение.</p>
                     <p class="fw-light h4 py-3">Перед тем как выбрать начальную школу для ребёнка, подумайте об уровне его интеллектуального развития, а также о здоровье, эмоциональной зрелости, темпераменте и мотивации к учёбе.</p>
-                    <p class="fw-light h4 py-3"></p>
+                    <p class="fw-light h4 py-3"></p> -->
+                    {{ Article.article_body|safe }}
                 </section>
                 <hr>
             </div>

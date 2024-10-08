@@ -1,46 +1,12 @@
 {% load static %} 
 <section name="catalog" class="rounded my-3 p-3" style="border: 1px solid #A8D0E6;">
     <h2>Каталог курсов</h2>
+    {% include 'components/course/filters.html' %}
     <div class="row p-4">
         <div class="col-md-3 rounded">
-            <div class="card p-3">
-                <img src="{% static 'test_images/png-transparent-html-logo-microsoft-powerpoint-line-tree-aviation-venn-diagram-geography-text-thumbnail-removebg-preview 1.svg' %}" alt="" class="card-img-top">    
-                <div class="card-body">
-                    <h5 class="card-title">NIS подготовка</h5>
-                    <p class="catd-text">Курсы по подготовке в НИШ от 41 999 тг</p>
-                    <a href="" class="btn w-100" style="border: 1px solid #FF6666;">Подробнее</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 rounded">
-            <div class="card p-3">
-                <img src="{% static 'test_images/png-transparent-html-logo-microsoft-powerpoint-line-tree-aviation-venn-diagram-geography-text-thumbnail-removebg-preview 1.svg' %}" alt="" class="card-img-top">    
-                <div class="card-body">
-                    <h5 class="card-title">NIS подготовка</h5>
-                    <p class="catd-text">Курсы по подготовке в НИШ от 41 999 тг</p>
-                    <a href="" class="btn w-100" style="border: 1px solid #FF6666;">Подробнее</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 rounded">
-            <div class="card p-3">
-                <img src="{% static 'test_images/png-transparent-html-logo-microsoft-powerpoint-line-tree-aviation-venn-diagram-geography-text-thumbnail-removebg-preview 1.svg' %}" alt="" class="card-img-top">    
-                <div class="card-body">
-                    <h5 class="card-title">NIS подготовка</h5>
-                    <p class="catd-text">Курсы по подготовке в НИШ от 41 999 тг</p>
-                    <a href="" class="btn w-100" style="border: 1px solid #FF6666;">Подробнее</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 rounded">
-            <div class="card p-3">
-                <img src="{% static 'test_images/png-transparent-html-logo-microsoft-powerpoint-line-tree-aviation-venn-diagram-geography-text-thumbnail-removebg-preview 1.svg' %}" alt="" class="card-img-top">    
-                <div class="card-body">
-                    <h5 class="card-title">NIS подготовка</h5>
-                    <p class="catd-text">Курсы по подготовке в НИШ от 41 999 тг</p>
-                    <a href="" class="btn w-100" style="border: 1px solid #FF6666;">Подробнее</a>
-                </div>
-            </div>
+            {% for Course in Courses %}
+            {% include 'blocks/courses/course_card.html' with Course=Course %}
+            {% endfor %}
         </div>
     </div>
 </section>

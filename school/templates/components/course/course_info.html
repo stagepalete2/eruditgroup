@@ -1,0 +1,47 @@
+{% load static %}
+<div class="col-md-6 fw-bold">
+    <div class="d-flex flex-column">
+        <img src="{% static 'test_images/7-1 1.svg' %}" alt="" class="d-block w-100 rounded">
+        <div class="mt-3">
+            <h1 class="text-center">{{ Course.course_name }}</h1>
+            <!-- <ul class="list-group list-group-flush">
+                <li class="list-group-item">арифметика (начальная школа)</li>
+                <li class="list-group-item">математика</li>
+                <li class="list-group-item">алгебра</li>
+                <li class="list-group-item">геометрия</li>
+                <li class="list-group-item">начала анализа (старшая школа).</li>
+            </ul>
+            <p class="m-0">Чтобы закрыть «многолетние» пробелы в знаниях или подготовиться к поступлению, советуем выбрать индивидуальный вид занятий и один из уровней: «Уровень 2» или «Уровень 3».</p> -->
+            <p class="m-0">{{ Course.course_description |safe}}</p>
+            <!-- {{ Course.course_description | safe }} -->
+        </div>
+        <div class="mt-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="p-1 d-flex flex-column rounded" style="background-color: #A8D0E6;">
+                        <img src="{% static 'test_images/icons8-clock-50 1.svg' %}" alt="" class="p-5">
+                        <h6 class="fw-lighter text-center">32 Академических часа</h6>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-1 h-100 d-flex flex-column rounded" style="background-color: #A8D0E6;">
+                        <img src="{% static 'test_images/icons8-video-100 1.svg' %}" alt="" class="d-block w-100 p-5">
+                        <h6 class="fw-lighter text-center">Видео в записи</h6>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-1 h-100 d-flex flex-column rounded" style="background-color: #A8D0E6;">
+                        <img src="{% static 'test_images/icons8-home-50 1.svg' %}" alt="" class="d-block w-100 p-5">
+                        <h6 class="fw-lighter text-center">Домашняя задания</h6>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-1 h-100 d-flex flex-column rounded" style="background-color: #A8D0E6;">
+                        <img src="{% static 'test_images/icons8-graduate-100 1.svg' %}" alt="" class="d-block w-100 p-5">
+                        <h6 class="fw-lighter text-center">Подход</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

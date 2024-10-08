@@ -7,6 +7,9 @@
 {% block 'content' %}
 <div class="container">
     <div class="container-fluid">
+        {% if user.user_type != 'Родитель' %}
+        <a href="{% url 'platform_home' %}" class="btn btn-outline-secondary">Перейти на платформу</a>
+        {% endif %}
         <div class="my-3">
             <h1 class="text-center">Личный Кабинет</h1>
             <div class="container row justify-content-center align-items-center">
@@ -16,19 +19,22 @@
                             <img src="{% static 'test_images/profile1.svg' %}" alt="" class="d-block rounded-circle" style="width: 150px; height: 150px">
                         </div>
                         <div class="col-md-8">
-                            <h2>Фамилия Имя <span class="badge bg-secondary">Родитель</span></h2>
-                            <h4>8 708 549 2937</h4>
-                            <h4>admin@admin.com</h4>
+                            <h3>{{user.name}} {{user.lastname}}<span class="badge bg-secondary">{{user.user_type}}</span></h3   >
+                            <h4>{{user.phone}}</h4>
+                            <h4>{{user.email}}</h4>
+                            <h4>ID: {{user.username}}</h4>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
+                    {% if user.user_type == 'Родитель' %}
                     <h2 class="text-center">Дети</h2>
                     <ul class="list-group list-group-flush px-4">
                         <li class="list-group-item"><a href="" class="text-decoration-none text-dark">Айгерим Иманова <span class="badge bg-secondary">Ребенок</span></a></li>
                         <li class="list-group-item"><a href="" class="text-decoration-none text-dark">Диас Иманов <span class="badge bg-secondary">Ребенок</span></a></li>
                         <li class="list-group-item"><a href="" class="text-decoration-none text-dark">Саида Иманова <span class="badge bg-secondary">Ребенок</span></a></li>
                     </ul>
+                    {% endif %}
                 </div>
             </div>
         </div>

@@ -11,15 +11,7 @@
 
 {% block 'content' %}
     <div class="container-fluid">
-        <nav class="px-2 m-2 border rounded" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb m-2">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Course</a></li>
-                <li class="breadcrumb-item"><a href="#">Cloud Computing</a></li>
-                <li class="breadcrumb-item"><a href="#">Lesson 1</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Examine NAT on a Wireless Router</li>
-            </ol>
-        </nav>
+      {% include 'components/breadcrumb.html' with url=url full=full_uri%}
 
         <section name="assignment" class="p-2 m-2 border rounded">
             <section name="assignment_title" class="px-2">

@@ -1,0 +1,7 @@
+<div class="d-flex flex-column border rounded p-2 mt-2">
+    <h4>Hot links</h4>
+    <hr>
+    {% for hot_link in hot_links %}
+    <a href="{% url 'platform_news' news_slug=hot_link.new.news_slug %}">{{hot_link.new.title}}</a>
+    {% endfor %}
+</div>

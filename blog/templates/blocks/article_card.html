@@ -1,0 +1,10 @@
+{% load static %}
+<a class="row p-2" href="{% url 'article' Article.article_slug %}">
+    <img class="col-md-12 rounded" src="https://picsum.photos/400" alt="">
+    <h5 class="col-md-12">{{ Article.article_title }}</h5>
+    <p class="m-0">
+        {% for tag in Article.tags.all %}
+        <span class="badge bg-secondary mx-1">{{ tag }}</span>
+        {% endfor %}
+    </p>
+</a>

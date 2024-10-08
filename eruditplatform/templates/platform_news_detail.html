@@ -1,0 +1,17 @@
+{% extends 'platform_base.html' %}
+{% load static %}
+
+{% block 'seo' %}
+{% endblock %}
+
+{% block 'title' %}
+<title>Course |</title>
+{% endblock %}
+
+
+{% block 'content' %}
+<div class="container-fluid">
+    {% include 'components/breadcrumb.html' with url=url%}
+    {% include 'components/new.html' with new=new %}
+</div>
+{% endblock %}

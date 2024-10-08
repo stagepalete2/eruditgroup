@@ -1,0 +1,13 @@
+{% load static %}
+
+{% for assignment in assignments %}
+<section name="lesson_content" class="p-2 row align-items-center">
+    <div class="col-md-auto">
+        <a href="" class="btn btn-outline-dark px-3"><i class="fa-solid fa-list-check"></i>  {{assignment.assignment_name}}</a>
+    </div>
+    <div class="col-md-auto">
+        <span class="badge bg-secondary">DUE TO {{assignment.assignment_due}}</span>
+        <span class="badge bg-danger">{{assignment.assignemnt_note}}</span>
+    </div>
+</section>
+{% endfor %}
