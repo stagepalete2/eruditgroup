@@ -54,3 +54,4 @@ venv.bak/
 docker/
 db.sqlite3
 staticfiles/
+media/git.txt
