@@ -27,26 +27,21 @@
                   </tr>
                 </thead>
                 <tbody>
+                  {% for assignment in assignments %}
+                    <tr>
+                      <th scope="row"><a href="" class="fst-italic text-dark">{{assignment.assignment.assignment_name}}</a></th>
+                      <td>{{assignment.grade}}</td>
+                      <td>0 - {{assignment.grade_max}}</td>
+                      <td>{%widthratio assignment.grade assignment.grade_max 100%}%</td>
+                      <td>{{assignment.feedback}}</td>
+                    </tr>
+                  {% endfor %}
                   <tr>
-                    <th scope="row"><a href="" class="fst-italic text-dark">Task 1</a></th>
-                    <td>8</td>
-                    <td>0 - 10</td>
-                    <td>80%</td>
-                    <td>Not bad!</td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><a href="" class="fst-italic text-dark">Homework</a></th>
-                    <td>5</td>
-                    <td>0 - 5</td>
-                    <td>100%</td>
-                    <td>Very Good!</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Course Total<br><span class="fw-lighter fst-italic">Includes Empty grades</span></th>
-                    <td class="fw-bold">90</td>
-                    <td class="fw-bold">0 - 1   00</td>
-                    <td class="fw-bold">90%</td>
+                    <th scope="row"></th>
                     <td class="fw-bold"></td>
+                    <td class="fw-bold"></td>
+                    <td class="fw-bold">Course Total<br><span class="fw-lighter fst-italic">Includes Empty grades</span></td>
+                    <td class="fw-bold">{{course_total}}%</td>
                   </tr>
                 </tbody>
               </table>

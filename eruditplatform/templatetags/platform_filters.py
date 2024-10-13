@@ -1,11 +1,12 @@
 from django import template
+from django.db.models.query import QuerySet
 
 register = template.Library()
 
 @register.filter
-def get_item(array, index):
+def get_item(array:dict, index):
     try:
-        return array[index]
+        return array.get(index)
     except IndexError:
         return None
     
@@ -33,3 +34,14 @@ def url_slicer(url:list[str], delimeter:str):
 def split(value, key): 
     value.split("key")
     return value.split(key)
+
+
+@register.filter(name='queryset_get')
+def queryset_get(queryset, user_id):
+    try:
+        record = queryset.filter(student=user_id).first()  # Get the first result if it exists
+        if record:
+            return record
+        return None
+    except Exception as e:
+        return None

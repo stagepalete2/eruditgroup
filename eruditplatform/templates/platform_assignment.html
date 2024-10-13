@@ -15,21 +15,32 @@
 
         <section name="assignment" class="p-2 m-2 border rounded">
             <section name="assignment_title" class="px-2">
-                <h2>Examine NAT on a Wireless Router</h2>
-                <p class="m-0"><span class="fw-bold">Opened: </span> Tuesday, 17 September 2024, 12:00 AM</p>
-                <p><span class="fw-bold">Due: </span> Tuesday, 18 September 2024, 12:00 AM</p>
+                <h2>{{assignment.assignment_name}}</h2>
+                <p class="m-0"><span class="fw-bold">Opened: </span> {{assignment.assignment_opened}}</p>
+                <p><span class="fw-bold">Due: </span> {{assignment.assignment_due}}</p>
             </section>
             <hr>
             <section name="assignment_body" class="p-2">
                 <div class="row">
-                    <section class="col-md-4">
-                        <p class="p-3 border rounded"><span class="badge bg-secondary my-2">Teacher</span><br>Dear, Students. In this assignment you have to create something like this...</p>
+                    <section class="col-md-4 border rounded mb-3 mx-2">
+                      <h4 class="mt-2 mb-0">Task instructions</h4>
+                        <p class="pt-2 m-0">{{assignment.created_by.name}} {{assignment.created_by.lastname}}<span class="badge bg-secondary m-2">{{assignment.created_by.user_type}}</span><br></p>
+                        <hr class="m-0 p-0 mb-2">
+                        {{assignment.assignment_detail|safe}}
                     </section>
                 </div>
                 <div class="row">
-                    <section class="col-md-4">
-                        <h4>Attached materials</h4>
-                        <a href="" class="btn btn-outline-secondary"><i class="fa-regular fa-file"></i> Lesson1.ppt</a>
+                  <section class="col-md-4">
+                    <h4>Attached materials</h4>
+                      {% if assignment.assignment_attachments.first %}
+                        <div class="d-flex flex-row flex-wrap gap-2">
+                          {% for attachment in assignment.assignment_attachments.all %}
+                          <a href="{{attachment.file.url}}" class="btn btn-outline-secondary" download><i class="fa-regular fa-file"></i> {{attachment.file.name}}</a>
+                          {% endfor %}
+                        </div>
+                      {% else %}
+                        <p>No attachments</p>
+                      {% endif %}
                     </section>
                 </div>
             </section>
@@ -68,11 +79,13 @@
                               </h2>
                               <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
+                                  <form action="">
                                     <div class="input-group mb-3">
                                         <input type="file" class="form-control" id="inputGroupFile02">
                                         <label class="input-group-text" for="inputGroupFile02">Upload</label>
                                     </div>
-                                    <button class="btn btn-outline-dark">Submit</button>
+                                    <button class="btn btn-outline-dark">Submit</button>  
+                                  </form>
                                 </div>
                               </div>
                             </div>

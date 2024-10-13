@@ -10,6 +10,9 @@
             <a class="text-dark text-decoration-none border p-3 w-100" href="{% url 'platform_dashboard' %}"><i class="fa-solid fa-gauge"></i> Dashboard</a>
             <a class="text-dark text-decoration-none border p-3 w-100" href="{% url 'platform_calendar' %}"><i class="fa-solid fa-calendar"></i>  Calendar</a>
             <a class="text-dark text-decoration-none border p-3 w-100" href=""><i class="fa-solid fa-list"></i>  My Courses</a>
+            {% for course in courses %}
+            <a class="text-dark text-decoration-none border p-3 w-100" href="{% url 'platform_course' pk=course.id %}">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-list"></i> {{course.course.course_name}}</a>
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -18,7 +21,7 @@
         <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
             <i class="fa-solid fa-bars"></i> Menu
         </button>
-      <a class="navbar-brand mx-3" href="#">Erudit Group</a>
+      <a class="navbar-brand mx-3" href="{% url 'platform_home' %}"><img src="{% static 'images/logos/logo.png' %}" alt="" width="300px"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

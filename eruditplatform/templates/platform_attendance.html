@@ -1,0 +1,40 @@
+{% extends 'platform_base.html' %}
+{% load static %}
+{% load platform_filters %}
+
+{% block 'seo' %}
+{% endblock %}
+
+{% block 'title' %}
+<title>Course |</title>
+{% endblock %}
+
+
+{% block 'content' %}
+    <div class="container-fluid">
+        <div class="container">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Remarks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for lesson in lessons %}
+                    <tr>
+                      <th scope="row">{{lesson.lesson_datetime}}</th>
+                      <td>{{ lesson.lesson_title }}</td>
+                      {% with lesson.attendance|queryset_get:user.id as attendance %}
+                        <td><span class="badge bg-success">{{attendance.status}}</span></td>
+                        <td>{{attendance.remark}}</td>
+                      {% endwith %}
+                    </tr>
+                    {% endfor %}    
+                </tbody>
+              </table>
+        </div>
+    </div>
+{% endblock %}

@@ -2,12 +2,8 @@
     <h4>Deadlines Timeline</h4>
     <hr>
     <div class="task border rounded p-2">
-        <a class="text-decoration-none text-dark" href="">
-            <div class="d-flex flex-row align-items-center">
-                <p><i class="fas fa-tasks mx-2"></i>
-                DUE TO Friday, 22 October, 17:00</p>
-            </div>
-            <p class="mx-2 my-0 text-primary">Cloud computing | Aitmukhanbetova Elvira</p>
-        </a>
+        {% for deadline in deadlines %}
+            {% include 'blocks/deadline.html' with deadline=deadline %}
+        {% endfor %}
     </div>
 </div>

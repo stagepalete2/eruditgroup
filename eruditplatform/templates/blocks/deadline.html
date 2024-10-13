@@ -1,0 +1,9 @@
+{% load static %}
+
+<a class="text-decoration-none text-dark" href="{% url 'platform_assignment' pk=deadline.id %}">
+    <div class="d-flex flex-row align-items-center">
+        <p><i class="fas fa-tasks mx-2"></i>
+        DUE TO {{deadline.assignment_due}}</p>
+    </div>
+    <p class="mx-2 my-0 text-primary">{{deadline.assignment_name}}</p>
+</a>

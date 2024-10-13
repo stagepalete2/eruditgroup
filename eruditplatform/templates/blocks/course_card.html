@@ -1,0 +1,17 @@
+{% load static %}
+
+<div class="col-md-3 mt-2">
+    <a href="{% url 'platform_course' pk=course.id %}" class="text-decoration-none ">
+        <div class="card" style="">
+            <img src="https://picsum.photos/400/200" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h6 class="fw-lighter">{{course.course.course_subcategory.subcategory_name}}</h6>
+              <h5 class="card-title w-100">{{course.course.course_name}}</h5>
+              <p class="card-text w-100">{{course.teacher.name}} {{course.teacher.lastname}}</p>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+        </div>
+    </a>
+</div>

@@ -15,7 +15,7 @@
 
     <section name="course_title" class="m-2 p-2 border rounded">
         <h1>{{ Course.course.course_name }}</h1>
-        <h3 class="fw-lighter">{{ Course.teacher }}</h3>
+        <h3 class="fw-lighter">{{ Course.teacher.name }} {{ Course.teacher.lastname }}</h3>
     </section>
 
     <section name="course" class="m-2 p-2 border rounded">
@@ -23,14 +23,14 @@
         <section name="course_content" class="p-2">
             <h3> Course content </h3>
             <section name="hot-links" class="d-flex flex-column jsutify-content-start align-items-start gap-2">
-                <a href="" class="btn btn-secondary"><i class="fa-solid fa-check"></i> Attendence</a>
-                <a href="" class="btn btn-secondary"><i class="fa-solid fa-graduation-cap"></i> Grades</a>
+                <a href="{% url 'platoform_course_attendance' pk=Course.id %}" class="btn btn-secondary"><i class="fa-solid fa-check"></i> Attendance</a>
+                <a href="{%url 'platform_course_grades' pk=Course.id %}" class="btn btn-secondary"><i class="fa-solid fa-graduation-cap"></i> Grades</a>
             </section>
             <hr>
         </section>
 
         {% for lesson in Course.group_lesson.all %}
-            {% include 'components/course_lesson.html' with title=lesson.lesson_title detail=lesson.lesson_detail attachments=lesson.lesson_attachments.all assignments=lesson.assignments.all %}
+            {% include 'components/course_lesson.html' with lesson=lesson title=lesson.lesson_title detail=lesson.lesson_detail attachments=lesson.lesson_attachments.all assignments=assignments %}
         {% endfor %}
     </section>
 </div>
