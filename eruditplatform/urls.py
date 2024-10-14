@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import PlatformHome, PlatformDashboard, PlatformCalendar, PlatformCourseDetail, PlatformCourseGrades, PlatformCourseAssignment, PlatformCourseTest, PlatformNewsDetail, PlatformCourseAttendacne
+from .views import PlatformHome, PlatformDashboard, PlatformCalendar, PlatformCourseDetail, PlatformCourseGrades, PlatformCourseAssignment, PlatformCourseTest, PlatformNewsDetail, PlatformCourseAttendance, SubmitAssignment
 
 urlpatterns = [
     path('', PlatformHome.as_view(), name='platform_home'),
@@ -12,5 +12,5 @@ urlpatterns = [
     path('course/<int:pk>/grade/', PlatformCourseGrades.as_view(), name='platform_course_grades'),
     path('course/assignment/<int:pk>/', PlatformCourseAssignment.as_view(), name='platform_assignment'),
     path('course/test/<int:pk>/', PlatformCourseTest.as_view(), name='platform_course_test'),
-    path('course/<int:pk>/attendance/', PlatformCourseAttendacne.as_view(), name='platoform_course_attendance')
+    path('course/<int:pk>/attendance/', PlatformCourseAttendance.as_view(), name='platoform_course_attendance'),
 ]

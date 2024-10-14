@@ -1,14 +1,18 @@
 {% load static %}
 {% load djmoney %}
-<div class="card p-3">
-    
-    <div class="card-body">
+<div class="card p-3 border-0">
+    {% if Course.course_main_image %}
+    <img src="{{Course.course_main_image.url }}" alt="" class="card-img m-0 p-0">
+    {% else %}
+
+    {% endif %}
+    <div class="card-body px-0">
         <h5 class="card-title">{{ Course.course_name }}</h5>
         <p class="catd-text">Курс {{ Course.course_name }} от {% money_localize Course.course_price %}</p>
         <p class="">
             <a href=""><span class="badge bg-secondary">{{ Course.course_subcategory.subcategory_name }}</span></a>
-            <a href=""><span class="badge bg-secondary">{{ Course.course_language }}</span></a>
-            <a href=""><span class="badge bg-secondary">{{ Course.course_grade }} Класс</span></a>
+            <a href=""><span class="badge bg-success">{{ Course.course_language }}</span></a>
+            <a href=""><span class="badge bg-primary">{{ Course.course_grade }} Класс</span></a>
         </p>
         <a href="{% url 'course' Course.course_slug %}" class="btn w-100" style="border: 1px solid #FF6666;">Подробнее</a>
     </div>

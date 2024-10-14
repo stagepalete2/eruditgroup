@@ -3,10 +3,10 @@
     <h2>Каталог курсов</h2>
     {% include 'components/course/filters.html' %}
     <div class="row p-4">
-        <div class="col-md-3 rounded">
-            {% for Course in Courses %}
-            {% include 'blocks/courses/course_card.html' with Course=Course %}
-            {% endfor %}
-        </div>
+        {% for Course in Courses %}
+            <div class="col-md-3 rounded">
+                {% include 'blocks/courses/course_card.html' with Course=Course %}
+            </div>
+        {% endfor %}
     </div>
 </section>

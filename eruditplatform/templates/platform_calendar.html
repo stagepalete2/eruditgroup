@@ -12,187 +12,60 @@
 
 {% block 'content' %}
 <div class="container-fluid">
-    {% include 'components/breadcrumb.html' with url=url full=full_uri%}
+  <nav class="px-2 m-2 border rounded" style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+    <ol class="breadcrumb m-2">
+            <li class="breadcrumb-item">
+                <a href="{% url 'platform_home' %}">
+                    <span itemprop="name">Home</span>
+                </a>
+                <meta itemprop="position" content="1">
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <span itemprop="name">Calendar</span>
+                <meta itemprop="position" content="2">
+            </li>
+    </ol>
+  </nav>
     {{time_table}}
     <section name="calendar" class="p-2">
         <div class="container">
-            <!-- <table class="table table-bordered">
-                <thead>
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Time</th>
+                  <th scope="col">Monday</th>
+                  <th scope="col">Tuesday</th>
+                  <th scope="col">Wednesday</th>
+                  <th scope="col">Thursday</th>
+                  <th scope="col">Friday</th>
+                  <th scope="col">Saturday</th>
+                  <th scope="col">Sunday</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for hour in hours_of_week %}
                   <tr>
-                    <th scope="col">Time</th>
-                    <th scope="col">Monday</th>
-                    <th scope="col">Tuesday</th>
-                    <th scope="col">Wednesday</th>
-                    <th scope="col">Thrirthday</th>
-                    <th scope="col">Friday</th>
-                    <th scope="col">Sarurday</th>
-                    <th scope="col">Sunday</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">09:00</th>
-                    <td></td>
-                    <td><span class="badge bg-primary">Cloud Computing</span></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">10:00</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <span class="badge bg-primary">Cloud Computing</span>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">11:00</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><span class="badge bg-primary">Cloud Computing</span></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">12:00</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">13:00</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">14:00</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">15:00</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">16:00</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">17:00</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">18:00</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">19:00</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">20:00</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table> -->
-              <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">Time</th>
-                        <th scope="col">Monday</th>
-                        <th scope="col">Tuesday</th>
-                        <th scope="col">Wednesday</th>
-                        <th scope="col">Thursday</th>
-                        <th scope="col">Friday</th>
-                        <th scope="col">Saturday</th>
-                        <th scope="col">Sunday</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  {% with "09:00,10:00,11:00,12:00,13:00,14:00,15:00,16:00,17:00,18:00,19:00,20:00"|split:"," as time %}
-                    {% for hour in time %}
-                      <tr>
-                          <th scope="row">{{ hour }}</th>
-                          {% for day in days_of_week %}
-                              <td>
-                                  {% if schedule|get_item:day %}
-                                      {% with schedule|get_item:day as day_schedule %}
-                                          {% if day_schedule|get_item:hour %}
-                                              {% for item in day_schedule|get_item:hour %}
-                                                  <a class="text-decoration-none text-white" href="{% url 'platform_course' item.time_table.group.course.course_slug  %}"><span class="badge bg-primary">{{ item.time_table.group.course.course_name }}</span></a>
-                                              {% endfor %}
-                                          {% endif %}
-                                      {% endwith %}
-                                  {% endif %}
-                              </td>
-                          {% endfor %}
-                      </tr>
+                    <!-- First column: Display the hour -->
+                    <th scope="row">{{ hour }}</th>
+                    
+                    <!-- Loop through each day of the week for the current hour -->
+                    {% for day in days_of_week %}
+                      <td>
+                        {% for schedule in schedules %}
+                          {% if schedule.hour == hour and schedule.day == day %}
+                            <!-- Display courses for the day and hour -->
+                            {% for course in schedule.courses %}
+                              <span class="badge bg-primary">{{ course.course.course_name }}</span><br>
+                            {% endfor %}
+                          {% endif %}
+                        {% endfor %}
+                      </td>
                     {% endfor %}
-                  {% endwith %}
-
-
+                  </tr>
+                {% endfor %}
+              </tbody>
+          </table>
               
-                </tbody>
-            </table>
             
         </div>
     </section>

@@ -23,21 +23,18 @@
   </nav>
   <nav class="container navbar navbar-expand-lg navbar-light">
     <div class="container-fluid row justify-content-between align-items-center">
-        <div class="col-md-2 d-flex flex-row justify-content-start align-items-center">
-          <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logos/logo.png' %}" alt="" width="200px"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar1" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+        <div class="col-12 col-sm-12 col-md-3 col-lg-3 d-flex flex-row justify-content-start align-items-center">
+          <a class="navbar-brand" href="{% url 'home' %}"><img class="img-fluid" src="{% static 'images/logos/logo.png' %}" alt="" ></a>
         </div>
-        <div class="col-md-6 d-flex flex-row justify-content-center align-items-center">
-          <div class="input-group border border-light border-dark rounded">
-            <input type="text" class="form-control border-0" placeholder="Поиск по Эрудиту" aria-label="Search" aria-describedby="basic-addon1">
-            <span class="input-group-text bg-white border-0" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-          </div>
+        <div class="col-12 col-sm-12 col-md-4 col-lg-6 d-flex flex-row justify-content-center align-items-center">
+            <div class="input-group border border-light border-dark rounded w-100">
+              <input type="text" id="search" class="form-control border-0" placeholder="Поиск по Эрудиту" aria-label="Search" aria-describedby="basic-addon1">
+              <span class="input-group-text bg-white border-0" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+            </div>
         </div>
-        <div class="col-md-3 d-flex flex-column justify-content-center align-items-center">
-          <div class="collapse navbar-collapse" id="navbar1">
-            <ul class="navbar-nav">
+        <div class="col-12 col-sm-12 col-md-5 col-lg-3 d-flex flex-column justify-content-center align-items-center">
+          <div class="navbar" id="navbar1">
+            <ul class="navbar-nav align-items-center d-flex flex-row">
                 <li class="nav-item">
                     <div class="btn text-white" style="background-color: #F76C6C;">
                         Записаться
@@ -45,11 +42,24 @@
                 </li>
                 <li class="nav-item">
                     {% if user.is_authenticated %}
-                    <a href="{% url 'profile' user.username %}" class="nav-link"><i class="fa-regular fa-user"></i> {{ user.name }} {{ user.lastname }}</a>
+                    
+                    <ul class="navbar-nav mx-2">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url 'profile' user.username %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="fa-regular fa-user"></i>
+                          {{ user.name }} {{ user.lastname }}
+                        </a>
+                        <ul class="position-absolute dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a href="{% url 'profile' user.username %}" type="submit" class="dropdown-item">Profile</a></form></li>
+                          <li><form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="dropdown-item btn btn-danger">Logout</button></form></li>
+                        </ul>
+                      </li>
+                    </ul>
                     {% else %}
                     <a class="nav-link" href="{% url 'signin' %}"><i class="fa-regular fa-user"></i> Войти / Регистрация</a>
                     {% endif %}
                 </li>
+                
             </ul>
           </div>
         </div>
@@ -62,74 +72,42 @@
       </button>
       <div class="collapse navbar-collapse" id="navbar2">
         <ul class="navbar-nav">
-          <div class="btn-group" style="background-color: #F8E9A1;">
-            <button class="btn nav-item dropdown-toggle" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-              <i class="fa-solid fa-bars"></i>
-              Меню
-            </button>
-            <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuClickableInside">
-              {% for Category in CourseCategories %}
-              <li>
-                <div class="btn-group dropend w-100">
-                  <button type="button" class="btn nav-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{ Category.category_name }}
-                  </button>
-                  <ul class="dropdown-menu dropdown-large p-3">
-                    <!-- <ul class="dropdown-menu p-3" style="min-width: 100vh!important"> -->
-                  <div class="row">
-                      {% for Subcategory in CourseSubcategories %}
-                      <div class="col-12 col-md-6 col-lg-4">
-                        <h4>{{ Subcategory.subcategory_name }}</h4>
-                      </div>
-                      {% endfor %}
-                    </div>
-                  </ul>
-                </div>
-              </li>
-              {% endfor %}
-
-              <li>
-                <div class="btn-group dropend w-100">
-                  <button type="button" class="btn nav-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropright
-                  </button>
-                  <ul class="dropdown-menu">
-                    <!-- Dropdown menu links -->
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <div class="btn-group dropend w-100">
-                  <button type="button" class="btn nav-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropright
-                  </button>
-                  <ul class="dropdown-menu">
-                    <!-- Dropdown menu links -->
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </div>
+          <button class="btn" type="button" style="background-color: #F8E9A1;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+            <i class="fa-solid fa-bars"></i> Menu
+          </button>
+          
           <li class="nav-item">
             <a class="nav-link" href="{% url 'catalog' %}">Курсы</a>
           </li>
+          {% for SubCategory in CourseSubcategories %}
           <li class="nav-item">
-            <a class="nav-link" href="#">Репититоры</a>
+            <a class="nav-link" href="#">{{SubCategory.subcategory_name}}</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Мини-группы</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Занятия</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Домашняя школа</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Скидки и акции</a>
-          </li>
+          {% endfor %}
         </ul>
       </div>
     </div>
   </nav>
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      {% for item in MenuItems %}
+      <button class="btn w-100 border-1 border-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        {{ item.category_name }}
+      </button>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          {% for subcategory in item.categories %}
+            <div class="col-12 col-md-6 col-lg-4">
+              <a href="" class="text-dark"><h4>{{ subcategory.subcategory_name }}</h4></a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </header>

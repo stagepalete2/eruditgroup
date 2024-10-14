@@ -11,8 +11,31 @@
 
 {% block 'content' %}
     <div class="container-fluid">
-        {% include 'components/breadcrumb.html' with url=url full=full_uri%}
-
+        
+        <nav class="px-2 m-2 border rounded" style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+          <ol class="breadcrumb m-2">
+                  <li class="breadcrumb-item">
+                      <a href="{% url 'platform_home' %}">
+                          <span itemprop="name">Home</span>
+                      </a>
+                      <meta itemprop="position" content="1">
+                  </li>
+                  <li class="breadcrumb-item" aria-current="page">
+                      <span itemprop="name">Course</span>
+                      <meta itemprop="position" content="2">
+                  </li>
+                  <li class="breadcrumb-item" aria-current="page">
+                    <a href="{% url 'platform_course' Grades.id %}">    
+                      <span itemprop="name">{{Grades.course.course_name}}</span>
+                      <meta itemprop="position" content="3">
+                    </a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                      <span itemprop="name">Grades</span>
+                      <meta itemprop="position" content="4">
+                  </li>
+          </ol>
+        </nav>
         <section name="user_grades" class="p-2 m-2 border rounded">
             <h3 class="my-2">User Grades - Yedige Mazhit</h3>
 
@@ -29,7 +52,7 @@
                 <tbody>
                   {% for assignment in assignments %}
                     <tr>
-                      <th scope="row"><a href="" class="fst-italic text-dark">{{assignment.assignment.assignment_name}}</a></th>
+                      <th scope="row"><a href="{% url 'platform_assignment' assignment.pk %}" class="fst-italic text-dark">{{assignment.assignment.assignment_name}}</a></th>
                       <td>{{assignment.grade}}</td>
                       <td>0 - {{assignment.grade_max}}</td>
                       <td>{%widthratio assignment.grade assignment.grade_max 100%}%</td>

@@ -2,131 +2,134 @@
 <div class="col-md-6">
     <div class="d-flex flex-column">
         <h1 class="text-center">Выбрать себе курс с удобным форматом</h1>
-        <div class="mt-3">
-            <h3>Формат обучения</h3>
-            <div class="row">
-                <div class="col-md-6 h-100">
-                    <div class="form-group">
-                        <input type="radio" class="btn-check" name="options-outlined" id="online-outlined" autocomplete="off" checked>
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="online-outlined">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h4>Онлайн</h4>
+        <form action="{% url 'schedule_contructor' Course.course_slug %}" method="GET">
+            {% csrf_token %}
+            <div class="mt-3">
+                <h3>Формат обучения</h3>
+                <div class="row">
+                    <div class="col-md-6 h-100">
+                        <div class="form-group">
+                            <input type="radio" class="btn-check" name="lesson-format-outlined" value="online" id="online-outlined" autocomplete="off" checked>
+                            <label class="btn btn-eruditgroup-outline-prime w-100" for="online-outlined">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4>Онлайн</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="m-0 text-end">от 4000 тг</p>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <p class="m-0 text-end">от 4000 тг</p>
+                                <p class="m-0">На удобной платформе</p>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 h-100">
+                        <div class="form-group">
+                            <input type="radio" class="btn-check" name="lesson-format-outlined" value="offline" id="offline-outlined" autocomplete="off">
+                            <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4>Оффлайн</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="m-0 text-end">от 4000 тг</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <p class="m-0">На удобной платформе</p>
-                        </label>
+                                <p class="m-0">В учебным центре</p>
+                            </label>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6 h-100">
-                    <div class="form-group">
-                        <input type="radio" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h4>Оффлайн</h4>
+            </div>
+            <div class="mt-3">
+                <h3>Вид занятий</h3>
+                <div class="row">
+                    <div class="col-md-6 h-100">
+                        <div class="form-group">
+                            <input type="radio" class="btn-check" name="group-type-outlines" id="individual-outlines" value="individual" autocomplete="off" checked>
+                            <label class="btn btn-eruditgroup-outline-prime w-100" for="individual-outlines">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4>Индивидуально</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="m-0 text-end">от 4000 тг</p>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <p class="m-0 text-end">от 4000 тг</p>
+                                <p class="m-0">Занятия с преподавателем 1 на 1</p>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 h-100">
+                        <div class="form-group">
+                            <input type="radio" class="btn-check" name="group-type-outlines" id="group-outlined" value="group" autocomplete="off">
+                            <label class="btn btn-eruditgroup-outline-prime w-100" for="group-outlined">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4>В группе</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="m-0">от 4000 тг</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <p class="m-0">В учебным центре</p>
+                                <p class="m-0">Занятия в группах от 2 учеников</p>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <h3>Длительность</h3>
+                <div class="row d-flex flex-wrap">
+                    <div class="col-md-4 h-100">
+                        <div class="form-group d-flex">
+                            <input type="radio" class="btn-check" name="duration-outlines" id="45-minute-outlined" value="45" autocomplete="off">
+                            <label class="btn btn-eruditgroup-outline-prime w-100" for="45-minute-outlined">
+                                <h4>45 Минут</h4>
+                                <p class="m-0">Небольшая нагрузка</p>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 h-100">
+                        <div class="form-group d-flex">
+                            <input type="radio" class="btn-check" name="duration-outlines" id="60-minute-outlined" value="60" autocomplete="off" checked>
+                            <label class="btn btn-eruditgroup-outline-prime w-100" for="60-minute-outlined">
+                                <h4>60 минут</h4>
+                                <p class="m-0">Нормальная нагрузка</p>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 h-100">
+                        <div class="form-group d-flex">
+                            <input type="radio" class="btn-check" name="duration-outlines" id="90-minute-outlined" value="90" autocomplete="off">
+                            <label class="btn btn-eruditgroup-outline-prime w-100" for="90-minute-outlined">
+                                <h4>90 минут</h4>
+                                <p class="m-0">Интенсивное обучение</p>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <h3>Язык обучение</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="radio" class="btn-check" name="lesson-lang-outlined" id="rus-outlined" value="rus" autocomplete="off">
+                        <label class="btn btn-eruditgroup-outline-prime w-100" for="rus-outlined">
+                            <h4>Русский</h4>
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="radio" class="btn-check" name="lesson-lang-outlined" id="kaz-outlined" value="kaz" autocomplete="off" checked>
+                        <label class="btn btn-eruditgroup-outline-prime w-100" for="kaz-outlined">
+                            <h4>Казахский</h4>
                         </label>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="mt-3">
-            <h3>Вид занятий</h3>
-            <div class="row">
-                <div class="col-md-6 h-100">
-                    <div class="form-group">
-                        <input type="radio" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h4>Индивидуально</h4>
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="m-0 text-end">от 4000 тг</p>
-                                </div>
-                            </div>
-                            <p class="m-0">Занятия с преподавателем 1 на 1</p>
-                        </label>
-                    </div>
-                </div>
-                <div class="col-md-6 h-100">
-                    <div class="form-group">
-                        <input type="radio" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h4>В группе</h4>
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="m-0">от 4000 тг</p>
-                                </div>
-                            </div>
-                            <p class="m-0">Занятия в группах от 2 учеников</p>
-                        </label>
-                    </div>
-                </div>
+            <div class="d-flex flex-row justify-content-end mt-4">
+                <button type="submit" name="schedule_construct" class="btn text-white" style="background-color: #F76C6C;">Подобрать расписания</button>
             </div>
-        </div>
-        <div class="mt-3">
-            <h3>Длительность</h3>
-            <div class="row d-flex flex-wrap">
-                <div class="col-md-4 h-100">
-                    <div class="form-group d-flex">
-                        <input type="radio" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
-                            <h4>45 Минут</h4>
-                            <p class="m-0">Небольшая нагрузка</p>
-                        </label>
-                    </div>
-                </div>
-                <div class="col-md-4 h-100">
-                    <div class="form-group d-flex">
-                        <input type="radio" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
-                            <h4>60 минут</h4>
-                            <p class="m-0">Нормальная нагрузка</p>
-                        </label>
-                    </div>
-                </div>
-                <div class="col-md-4 h-100">
-                    <div class="form-group d-flex">
-                        <input type="radio" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
-                            <h4>90 минут</h4>
-                            <p class="m-0">Интенсивное обучение</p>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mt-3">
-            <h3>Язык обучение</h3>
-            <div class="row">
-                <div class="col-md-6">
-                    <input type="radio" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                    <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
-                        <h4>Русский</h4>
-                    </label>
-                </div>
-                <div class="col-md-6">
-                    <input type="radio" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                    <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
-                        <h4>Казахский</h4>
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="d-flex flex-row justify-content-end mt-4">
-            <button class="btn text-white" style="background-color: #F76C6C;">Подобрать расписания</button>
-        </div>
+        </form>
     </div>
 </div>

@@ -15,7 +15,7 @@ class CourseCategory(models.Model):
 class CourseSubcategory(models.Model):
     # Подготовка к вуз, Подготовка к ЕНТ, подготовка к Айлтс
     subcategory_name = models.CharField(max_length=150)
-    course_category = models.ForeignKey(to=CourseCategory, on_delete=models.CASCADE, null=True, blank=True)
+    course_category = models.ForeignKey(to=CourseCategory, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.subcategory_name
@@ -75,4 +75,9 @@ class BannerImages(models.Model):
 class Banner(models.Model):
     banner_name = models.CharField(max_length=150)
     images = models.ManyToManyField(to=BannerImages)
+    banner_title = models.CharField(max_length=255)
+    banner_content = RichTextField()
+    
+    button_title = models.CharField(max_length=100)
+    button_url = models.URLField()
     

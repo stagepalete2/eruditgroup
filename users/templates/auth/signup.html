@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block 'seo' %}
+{% endblock %}
+
+{% block 'content' %}
+<!-- {% include 'components/divider.html' %} -->
+<div class="container">
+    <div class="container-fluid">
+        <div class="row justify-content-center my-4 border border-1 rounded py-3">
+            <div class="col-md-4 col-lg-4 d-flex flex-column justify-content-start p-3">
+                <h1>Добро пожаловать в Erudit Group</h1>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Доступное и качественное образование</li>
+                    <li class="list-group-item">Различные полезные курсы для школы и жизни</li>
+                  </ul>
+            </div>
+            <hr class="">
+            <div class="col-md-7 col-lg-7">
+                <h4 class="text-center">Регистрация</h4>
+                <div class="text-danger">
+                    {% for field in form %}
+                        {% for error in field.errors %} 
+                            <div class="alert alert-danger">
+                                <strong>{{ error }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                <form action="{% url 'signup' %}" method="POST">
+                    {% csrf_token %}
+                    <div id="div_id_email" class="mb-3"> 
+                        <label for="id_email" class="form-label">Email</label> 
+                        <input type="email" name="email" maxlength="200" autofocus="" class="emailinput form-control" id="id_email"> 
+                    </div> 
+                    <div id="div_id_username" class="mb-3"> 
+                        <label for="id_username" class="form-label">Username</label> 
+                        <input type="text" name="username" maxlength="150" class="textinput form-control" id="id_username"> 
+                    </div> 
+                    <div id="div_id_name" class="mb-3"> 
+                        <label for="id_name" class="form-label requiredField">Name<span class="asteriskField">*</span> 
+                        </label> <input type="text" name="name" maxlength="150" class="textinput form-control" required="" id="id_name"> 
+                    </div> 
+                    <div id="div_id_lastname" class="mb-3"> 
+                        <label for="id_lastname" class="form-label">Lastname</label> 
+                        <input type="text" name="lastname" maxlength="150" class="textinput form-control" id="id_lastname"> 
+                    </div> 
+                    <div id="div_id_phone" class="mb-3"> 
+                        <fieldset> 
+                            <label class="form-label requiredField">Phone<span class="asteriskField">*</span> </label> 
+                        <input type="text" name="phone_0" size="13" class="textinput form-control" required="" id="id_phone_0">
+                        <span class="phone-field-ext">&nbsp;&nbsp;ext.&nbsp;&nbsp;</span><input type="text" name="phone_1" size="4" class="textinput form-control" id="id_phone_1"> </fieldset> 
+                    </div> 
+                    <div id="div_id_date_of_birth" class="mb-3"> 
+                        <label for="id_date_of_birth" class="form-label">Date of birth</label> 
+                        <input type="text" name="date_of_birth" class="dateinput form-control" id="id_date_of_birth"> 
+                    </div> 
+                    <div id="div_id_user_type" class="mb-3"> 
+                        <label for="id_user_type" class="form-label requiredField">User type<span class="asteriskField">*</span> </label> 
+                        <select name="user_type" class="select form-select" required="" id="id_user_type"> 
+                            <option value="" selected="">---------</option> 
+                            <option value="Учитель">Учитель</option> 
+                            <option value="Обучающийся">Обучающийся</option> 
+                            <option value="Родитель">Родитель</option> 
+                            <option value="Ребенок">Ребенок</option>
+                        </select> 
+                    </div> 
+                    <div id="div_id_password1" class="mb-3"> 
+                        <label for="id_password1" class="form-label">Password</label> 
+                        <input type="password" name="password1" autocomplete="new-password" class="passwordinput form-control" aria-describedby="id_password1_helptext" id="id_password1"> 
+                        <div id="id_password1_helptext" class="form-text">
+                            <ul>
+                                <li>Your password can’t be too similar to your other personal information.</li>
+                                <li>Your password must contain at least 8 characters.</li>
+                                <li>Your password can’t be a commonly used password.</li>
+                                <li>Your password can’t be entirely numeric.</li>
+                            </ul>
+                        </div> 
+                    </div> 
+                    <div id="div_id_password2" class="mb-3"> 
+                        <label for="id_password2" class="form-label">Password confirmation</label> 
+                        <input type="password" name="password2" autocomplete="new-password" class="passwordinput form-control" aria-describedby="id_password2_helptext" id="id_password2"> 
+                        <div id="id_password2_helptext" class="form-text">Enter the same password as before, for verification.</div> 
+                    </div>
+
+                    <div class="d-flex flex-row justify-content-start align-items-center gap-2">
+                        <button type="submit" class="btn btn-primary">Регистрация</button>
+                        <p class="m-0">Есть аккаунта? - <a href="{% url 'signin' %}">Войдите в аккаунт</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

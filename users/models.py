@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.utils import timezone
 from django.template.defaultfilters import slugify
 from phone_field import PhoneField
+from djmoney.models.fields import MoneyField
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -78,3 +79,16 @@ class User(AbstractBaseUser, PermissionsMixin):
         if not self.id:
             self.slug = slugify(self.username)
         super(User, self).save(*args, **kwargs)
+        
+class Order(models.Model):
+    order_date = models.DateTimeField(auto_now_add=True)
+    customer = models.ForeignKey(to='users.User', on_delete=models.CASCADE, related_name='customer')
+    order_item = models.ForeignKey(to='school.Course', on_delete=models.CASCADE)
+    number_of_lessons_per_month = models.IntegerField()
+    teacher = models.ForeignKey(to='users.User', on_delete=models.CASCADE, related_name='teacher')
+    
+    payment_amount = MoneyField(max_digits=14, decimal_places=2, null=True, default_currency='KZT')
+    
+    
+    def __str__(self):
+        return self.order_item

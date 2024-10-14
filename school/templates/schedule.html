@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block 'content' %}
+    {% csrf_token %}
     <div class="container my-2">
         <div class="text-center">
             <h1>Подбор расписания</h1>
@@ -19,27 +20,27 @@
                 <h2>Математика</h2>
                 <div class="row">
                     <div class="col-md-2">
-                        <input type="radio" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
+                        <input type="radio" class="btn-check" name="format-outlined" id="format-outlined" autocomplete="off" checked disabled>
                         <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
-                            <h4 class="m-0">Онлайн</h4>
+                            <h4 class="m-0">{{lesson_format}}</h4>
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="radio" class="btn-check" name="group-outlined" id="group-outlined" autocomplete="off" checked disabled>
+                        <label class="btn btn-eruditgroup-outline-prime w-100" for="group-outlined">
+                            <h4 class="m-0">{{group_type}}</h4>
                         </label>
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
-                            <h4 class="m-0">В группе</h4>
+                        <input type="radio" class="btn-check" name="duration-outlined" id="diration-outlined" autocomplete="off" checked disabled>
+                        <label class="btn btn-eruditgroup-outline-prime w-100" for="diration-outlined">
+                            <h4 class="m-0">{{lesson_duration}}</h4>
                         </label>
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
-                            <h4 class="m-0">45 минут</h4>
-                        </label>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="radio" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
-                            <h4 class="m-0">В месяц</h4>
+                        <input type="radio" class="btn-check" name="lang-outlined" id="lang-outlined" autocomplete="off"  checked disabled>
+                        <label class="btn btn-eruditgroup-outline-prime w-100" for="lang-outlined">
+                            <h4 class="m-0">{{lesson_lang}}</h4>
                         </label>
                     </div>
                 </div>
@@ -48,44 +49,44 @@
                 <h4>Выберите желаемые дни недели</h4>
                 <div class="row">
                     <div class="col-md-1">
-                        <input type="checkbox" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
+                        <input type="checkbox" class="btn-check day-of-week-checkbox" name="day-of-the-week-outlined" id="monday-outlined" value="Monday" autocomplete="off">
+                        <label class="btn btn-eruditgroup-outline-prime w-100" for="monday-outlined">
                             <h4 class="m-0">Пн</h4>
                         </label>
                     </div>
                     <div class="col-md-1">
-                        <input type="checkbox" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
+                        <input type="checkbox" class="btn-check day-of-week-checkbox" name="day-of-the-week-outlined" id="tuesday-outlined" value="Tuesday" autocomplete="off">
+                        <label class="btn btn-eruditgroup-outline-prime w-100" for="tuesday-outlined">
                             <h4 class="m-0">Вт</h4>
                         </label>
                     </div>
                     <div class="col-md-1">
-                        <input type="checkbox" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
+                        <input type="checkbox" class="btn-check day-of-week-checkbox" name="day-of-the-week-outlined" id="wednesday-outlined" value="Wednesday" autocomplete="off">
+                        <label class="btn btn-eruditgroup-outline-prime w-100" for="wednesday-outlined">
                             <h4 class="m-0">Ср</h4>
                         </label>
                     </div>
                     <div class="col-md-1">
-                        <input type="checkbox" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
+                        <input type="checkbox" class="btn-check day-of-week-checkbox" name="day-of-the-week-outlined" id="thursday-outlined" value="Thursday" autocomplete="off">
+                        <label class="btn btn-eruditgroup-outline-prime w-100" for="thursday-outlined">
                             <h4 class="m-0">Чт</h4>
                         </label>
                     </div>
                     <div class="col-md-1">
-                        <input type="checkbox" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
+                        <input type="checkbox" class="btn-check day-of-week-checkbox" name="day-of-the-week-outlined" id="friday-outlined" value="Friday" autocomplete="off">
+                        <label class="btn btn-eruditgroup-outline-prime w-100" for="friday-outlined">
                             <h4 class="m-0">Пт</h4>
                         </label>
                     </div>
                     <div class="col-md-1">
-                        <input type="checkbox" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
+                        <input type="checkbox" class="btn-check day-of-week-checkbox" name="day-of-the-week-outlined" id="saturday-outlined" value="Saturday" autocomplete="off">
+                        <label class="btn btn-eruditgroup-outline-prime w-100" for="saturday-outlined">
                             <h4 class="m-0">Сб</h4>
                         </label>
                     </div>
                     <div class="col-md-1">
-                        <input type="checkbox" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                        <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
+                        <input type="checkbox" class="btn-check day-of-week-checkbox" name="day-of-the-week-outlined" id="sunday-outlined" value="Sunday" autocomplete="off">
+                        <label class="btn btn-eruditgroup-outline-prime w-100" for="sunday-outlined">
                             <h4 class="m-0">Вс</h4>
                         </label>
                     </div>
@@ -100,12 +101,13 @@
                                 {% for i in '123' %}
                                 <div class="carousel-item {% if forloop.first %} active {% endif %}">
                                     <div class="row">
+                                        {% for j in '123' %}
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="radio" class="btn-check" name="options-outlined" id="offline-outlined" autocomplete="off">
-                                                <label class="btn btn-eruditgroup-outline-prime w-100" for="offline-outlined">
+                                                <input type="checkbox" class="btn-check teachers" name="teacher-outlined" id="teacher-outlined-{{i}}{{j}}" value="teacher_number-{{i}}" autocomplete="off">
+                                                <label class="btn btn-eruditgroup-outline-prime w-100" for="teacher-outlined-{{i}}{{j}}">
                                                     <h6 class="m-0">
-                                                        <div class="card p-3 border-0">
+                                                        <div class="p-3 border-0 btn-eruditgroup-outline-prime">
                                                             <div class="row">
                                                                 <div class="col-md-5 d-flex flex-row align-items-center justify-content-start gap-4">
                                                                     <img src="{% static 'test_images/profile1.svg' %}" style="width:40px; height:40px;" alt="" class="d-block rounded-cirlce">
@@ -122,14 +124,13 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                        </div>                                        
+                                        {% endfor %}                           
                                     </div>
                                 </div>
                                 {% endfor %}
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="carousel-control-prev-icon color-black" aria-hidden="true"></span>
                               <span class="visually-hidden mx-2">Previous</span>
                             </button>
                             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
@@ -304,4 +305,48 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block 'js' %}
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script>
+    $(document).ready(() => {
+        let days = []  // Initialize the array outside of the event handler
+
+        $('.day-of-week-checkbox').on('change', function() {
+            if (this.checked) {
+                // Add the day to the array if the checkbox is checked
+                if (!days.includes(this.value)) {
+                    days.push(this.value);
+                    sendAjax(days);
+                }
+            } else {
+                // Remove the day from the array if the checkbox is unchecked
+                days = days.filter(day => day !== this.value);
+                sendAjax(days);  // Send the updated array via your AJAX function
+            }
+            console.log(days)
+        });
+
+    })
+    function sendAjax(days){
+        $.ajax({
+            url: `{% url 'api-get_free_teachers' %}`,         /* Куда отправить запрос */
+            method: 'POST',             /* Метод запроса (post или get) */
+            dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
+            data: {
+                'days[]': days,  
+                csrfmiddlewaretoken : Cookies.get('csrftoken'),
+
+            },     /* Данные передаваемые в массиве */
+            success: function(data){
+                console.log(data)
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                console.log("Status: " + textStatus + " Error: " + errorThrown);
+                console.log(XMLHttpRequest)
+            }
+        });
+    }
+</script>
 {% endblock %}

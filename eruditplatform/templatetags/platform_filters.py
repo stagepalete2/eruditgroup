@@ -1,5 +1,6 @@
 from django import template
 from django.db.models.query import QuerySet
+from datetime import datetime as dt
 
 register = template.Library()
 
@@ -43,5 +44,21 @@ def queryset_get(queryset, user_id):
         if record:
             return record
         return None
+    except Exception as e:
+        return None
+
+@register.filter(name='datetime_to_str')
+def datetime_to_str(datetime):
+    try:
+        t = dt(datetime)
+        return t
+    except Exception as e:
+        print(e)
+        return None
+    
+@register.filter(name='str')
+def str(something):
+    try:
+        return str(something)
     except Exception as e:
         return None

@@ -11,7 +11,26 @@
 
 {% block 'content' %}
 <div class="container-fluid">
-    {% include 'components/breadcrumb.html' with url=url%}
+    <nav class="px-2 m-2 border rounded" style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+        <ol class="breadcrumb m-2">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'platform_home' %}">
+                        <span itemprop="name">Home</span>
+                    </a>
+                    <meta itemprop="position" content="1">
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a href="{% url 'platform_home' %}">
+                        <span itemprop="name">News</span>
+                        <meta itemprop="position" content="2">
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                        <span itemprop="name">{{new.title}}</span>
+                        <meta itemprop="position" content="3">
+                </li>
+        </ol>
+    </nav>
     {% include 'components/new.html' with new=new %}
 </div>
 {% endblock %}

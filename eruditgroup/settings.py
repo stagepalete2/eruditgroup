@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'taggit',
     'phone_field',
     
+    'page',
     'users',
     'school',
     'teachers',
@@ -149,7 +150,8 @@ AUTH_USER_MODEL = 'users.User'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGIN_URL = "signin"
+LOGOUT_REDIRECT_URL = "signin"
 
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"

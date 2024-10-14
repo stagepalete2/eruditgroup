@@ -13,6 +13,12 @@
     <script src="https://kit.fontawesome.com/4495d6df4b.js" crossorigin="anonymous"></script>
     {% bootstrap_css %}
     {% bootstrap_javascript %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script src= "{% static 'javascripts/jquery-ui.js' %}"></script>   
+    
+    <link href= "{% static 'styles/jquery-ui.css' %}" rel="stylesheet" type="text/css" />   
     
     {% block 'title' %}
     {% endblock %}
@@ -26,5 +32,44 @@
         </div>
         {% include 'shared/footer.html' %}
     </div>
+    <script>
+        $(function() {
+          $("#search").autocomplete({
+            source: function(request, response) {
+              $.ajax({
+                url: '{% url "search" %}',
+                data: {
+                  'q': request.term
+                },
+                success: function(data) {
+                  var results = data.map(function(item) {
+                    return {  // The display text for the suggestion
+                      value: item.title,
+                      href: item.href
+                    };
+                  });
+                  response(results);
+                }
+              });
+            },
+            minLength: 2,
+            create: function () {
+                $(this).data('ui-autocomplete')._renderItem = function (ul, item) {
+                    console.log(item)
+                    return $(
+                        '<li class="mylink" href="'+ item.href +'">' + item.value + '</li>')
+                        .appendTo(ul);
+                };
+            }
+          });
+        });
+        $(document).on("click", ".mylink", function (e) {
+            window.location.href = ($(this).attr('href'));
+            $( ".field_values" ).autocomplete( "search");
+        });
+      </script>
+      <script src="{% static 'javascripts/utils.js' %}"></script>
+      {% block 'js' %}
+      {% endblock %}
 </body>
 </html>

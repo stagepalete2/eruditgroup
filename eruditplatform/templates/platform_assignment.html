@@ -52,36 +52,69 @@
                             <tbody>
                               <tr>
                                 <th scope="row" class="table-active">Submission status</th>
-                                <td>No attempt</td>
+                                <td>
+                                  {% if submission and submission.modified < assignment.assignment_due %}
+                                  <span class="badge bg-success">Submitted</span>
+                                  {% elif submission and submission.modified > assignment.assignment_due  %}
+                                  <span class="badge bg-danger">Expired</span>
+                                  {% else %}
+                                  No attempt
+                                  {% endif %}
+                                </td>
                               </tr>
                               <tr>
                                 <th scope="row" class="table-active">Grading status</th>
-                                <td>Not graded</td>
+                                <td>
+                                  {% if grade %}
+                                  <span class="badge bg-success">
+                                    {{grade.grade}}
+                                  </span>
+                                  {% else %}
+                                  Not graded
+                                  {% endif %}
+                                </td>
                               </tr>
                               <tr>
                                 <th scope="row" class="table-active">Time remaining</th>
-                                <td>3 days, 22 hours</td>
+                                <td>
+                                  {{assignment.assignment_due}}
+                                </td>
                               </tr>
                               <tr>
                                 <th scope="row" class="table-active">Feedback</th>
-                                <td>No feedback</td>
+                                <td>
+                                  {% if grade %}
+                                  {{grade.feedback}}
+                                  {% else %}
+                                  No feedback
+                                  {% endif %}
+                                </td>
                               </tr>
                             </tbody>
                           </table>
                     </section>
-                    <section class="col-md-4 border rounded mx-2 p-3">
+                    <section class="col-md-7 border rounded mx-2 p-3">
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
                               <h2 class="accordion-header" id="flush-headingOne">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                  Add Submission |<span class="badge bg-secondary">No attempts</span>
+                                  Add Submission |
+                                    {% if submission and submission.modified < assignment.assignment_due %}
+                                    <span class="badge bg-success">Submitted</span>
+                                    {% elif submission and submission.modified > assignment.assignment_due %}
+                                    
+                                    <span class="badge bg-danger">Expired</span>
+                                    {% else %}
+                                    <span class="badge bg-secondary">No attempt</span>
+                                    {% endif %}
                                 </button>
                               </h2>
                               <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
-                                  <form action="">
+                                  <form action="{% url 'platform_assignment' assignment.id %}" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
                                     <div class="input-group mb-3">
-                                        <input type="file" class="form-control" id="inputGroupFile02">
+                                        <input type="file" class="form-control" id="files" name="files">
                                         <label class="input-group-text" for="inputGroupFile02">Upload</label>
                                     </div>
                                     <button class="btn btn-outline-dark">Submit</button>  
@@ -89,7 +122,15 @@
                                 </div>
                               </div>
                             </div>
+                        </div>
+                        <div class="container-fluid">
+                          <h4>Submissions</h4>
+                          <div class="row">
+                            {% for file in submission.files.all %}
+                              <a href="{{ file.file.url }}" class="col-md-3 btn btn-outline-dark m-1 overflow-hidden" download><i class="fa-regular fa-file"></i>&nbsp;{{file.file.name}}<hr class="m-0 p-0">{{file.created}} </a>
+                            {% endfor %}
                           </div>
+                        </div>
                     </section>
                 </div>
             </section>

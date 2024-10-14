@@ -15,15 +15,19 @@
             <div class="row">
                 <div class="col-md-6">
                     <section name="main-article" class="btn p-2 rounded text-start">
+                        {% if  Articles.first %}
                         {% include 'blocks/article_card.html' with Article=Articles.first %}
+                        {% endif %}
                     </section>
                 </div>
                 <div class="col-md-6">
                     <section name="other-articles" class="row rounded">
                         {% for Article in Articles|slice:'1:6' %}
-                        <div class="col-md-4">
-                            {% include 'blocks/article_card.html' with Article=Article %}
-                        </div>
+                            {% if Article %}
+                            <div class="col-md-4">
+                                {% include 'blocks/article_card.html' with Article=Article %}
+                            </div>
+                            {% endif %}
                         {% endfor %}
                     </section>
                 </div>
@@ -35,9 +39,11 @@
                 <h1 class="text-uppercase">популярные материалы</h1>
                 <section name="articles_other" class="row mx-auto">
                     {% for Article in Articles|slice:'6:18' %}
+                    {% if Article %}
                     <div class="col-md-3">
                         {% include 'blocks/article_card_2.html' with Article=Article %}
                     </div>
+                    {% endif %}
                     {% endfor %}
                     <div class="row">
                         <a href="" class="col-md-4 btn btn-outline-dark mx-auto">Показать еще</a>
@@ -56,9 +62,11 @@
                 <h1 class="text-uppercase">популярные лайфхаки</h1>
                 <section name="articles_other" class="row mx-auto">
                     {% for Article in Articles|slice:'18:30' %}
+                    {% if Article %}
                     <div class="col-md-3">
                         {% include 'blocks/article_card_2.html' with Article=Article %}
                     </div>
+                    {% endif %}
                     {% endfor %}
                     <div class="row">
                         <a href="" class="col-md-4 btn btn-outline-dark mx-auto">Показать еще</a>

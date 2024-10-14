@@ -28,4 +28,5 @@ urlpatterns = [
     path('teachers/', include('teachers.urls')),
     path('platform/', include('eruditplatform.urls')),
     path('blog/', include('blog.urls')),
+    path('api/', include('page.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

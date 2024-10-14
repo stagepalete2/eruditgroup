@@ -1,5 +1,6 @@
 {% extends 'platform_base.html' %}
 {% load static %}
+{% load platform_filters %}
 
 {% block 'seo' %}
 {% endblock %}
@@ -11,8 +12,25 @@
 
 {% block 'content' %}
 <div class="container-fluid">
-    {% include 'components/breadcrumb.html' with url=url full=full_uri%}
+    <nav class="px-2 m-2 border rounded" style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+        <ol class="breadcrumb m-2">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'platform_home' %}">
+                        <span itemprop="name">Home</span>
+                    </a>
+                    <meta itemprop="position" content="1">
+                </li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <span itemprop="name">Course</span>
+                    <meta itemprop="position" content="2">
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                        <span itemprop="name">{{Course.course.course_name}}</span>
+                        <meta itemprop="position" content="3">
+                </li>
 
+        </ol>
+    </nav>
     <section name="course_title" class="m-2 p-2 border rounded">
         <h1>{{ Course.course.course_name }}</h1>
         <h3 class="fw-lighter">{{ Course.teacher.name }} {{ Course.teacher.lastname }}</h3>
@@ -22,10 +40,45 @@
 
         <section name="course_content" class="p-2">
             <h3> Course content </h3>
-            <section name="hot-links" class="d-flex flex-column jsutify-content-start align-items-start gap-2">
-                <a href="{% url 'platoform_course_attendance' pk=Course.id %}" class="btn btn-secondary"><i class="fa-solid fa-check"></i> Attendance</a>
-                <a href="{%url 'platform_course_grades' pk=Course.id %}" class="btn btn-secondary"><i class="fa-solid fa-graduation-cap"></i> Grades</a>
-            </section>
+            <div class="row gap-1 overflow-auto">
+                <section name="hot-links" class="col-md-4 d-flex flex-column jsutify-content-start align-items-start gap-2">
+                    <a href="{% url 'platoform_course_attendance' pk=Course.id %}" class="btn btn-secondary"><i class="fa-solid fa-check"></i> Attendance</a>
+                    <a href="{%url 'platform_course_grades' pk=Course.id %}" class="btn btn-secondary"><i class="fa-solid fa-graduation-cap"></i> Grades</a>
+                </section>
+                <section name="timetable" class="col-md-7">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Monday</th>
+                                <th scope="col">Tuesday</th>
+                                <th scope="col">Wednesday</th>
+                                <th scope="col">Thursday</th>
+                                <th scope="col">Friday</th>
+                                <th scope="col">Saturday</th>
+                                <th scope="col">Sunday</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {% for day in days %}
+                                    <th>
+                                        {% if day in timetable_by_day %}
+                                            {% with timetable_by_day|get_item:day as datetime %}
+                                                {% for time in datetime %}
+                                                    <span class="badge bg-dark">{{time}}</span>
+                                                {% endfor %}
+                                            {% endwith %}
+                                        {% else %}
+                                            No timetable
+                                        {% endif %}
+                                    </th>
+                                {% endfor %}
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
             <hr>
         </section>
 

@@ -10,7 +10,23 @@
 
 {% block 'content' %}
 <div class="container-fluid">
-    {% include 'components/breadcrumb.html' with url=url%}
+        <nav class="px-2 m-2 border rounded" style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+            <ol class="breadcrumb m-2">
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'platform_home' %}">
+                            <span itemprop="name">Home</span>
+                        </a>
+                        <meta itemprop="position" content="1">
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                            <a href="">    
+                                <span itemprop="name"></span>
+                            </a>
+                            <span itemprop="name"></span>
+                        <meta itemprop="position" content="">
+                    </li>
+            </ol>
+        </nav>
 
     <section name="news" class="border p-4 m-2">
         <h1 class="mx-2">News</h1>

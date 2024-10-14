@@ -98,9 +98,39 @@ class AssignmentGrade(models.Model):
 
 class AssignmentAttachments(models.Model):
     file = models.FileField(upload_to='attachments')
+    
+    def __str__(self):
+        return self.file.name
 
 class AssignmentSubmissions(models.Model):
+    student = models.ForeignKey(to='users.User', on_delete=models.CASCADE)
+    assignment = models.ForeignKey(to='eruditplatform.CourseAssignment', on_delete=models.CASCADE)
+    files = models.ManyToManyField(to='eruditplatform.AssignmentSubmissionFiles')
+    created = models.DateTimeField(editable=False)
+    modified = models.DateTimeField()
+    
+    def save(self, *args, **kwargs):
+        ''' On save, update timestamps '''
+        if not self.id:
+            self.created = timezone.now()
+        self.modified = timezone.now()
+        return super(AssignmentSubmissions, self).save(*args, **kwargs)
+    
+    def __str__(self):
+        return f'{self.student.name} {self.student.lastname} - {self.assignment.assignment_name}'
+    
+class AssignmentSubmissionFiles(models.Model):
+    created = models.DateTimeField(editable=False)
     file = models.FileField(upload_to='submissions')
+    
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.created = timezone.now()
+        
+        return super(AssignmentSubmissionFiles, self).save(*args, **kwargs)
+    
+    def __str__(self):
+        return f'{self.file.name}'
     
 class CourseAssignment(models.Model):
     assignment_name = models.CharField(max_length=255)
@@ -116,6 +146,7 @@ class CourseAssignment(models.Model):
     deleted = models.DateTimeField(null=True, blank=True)
     
     created_by = models.ForeignKey(to='users.User', on_delete=models.CASCADE)
+
 
     def __str__(self):
         return f'{self.assignment_name}'

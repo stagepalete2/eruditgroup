@@ -12,11 +12,22 @@
     <div class="container-fluid">
         <div class="row justify-content-center my-4 border border-1 rounded py-3">
             <div class="col-md-4">
-
+                <h1>Добро пожаловать в Erudit Group</h1>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Доступное и качественное образование</li>
+                    <li class="list-group-item">Различные полезные курсы для школы и жизни</li>
+                  </ul>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <h4 class="text-center">Войти</h4>
-                {% crispy LoginForm %}
+                <form action="{% url 'signin' %}" method="post">
+                    {% csrf_token %}
+                    {{ LoginForm|crispy }}
+                    <div class="d-flex flex-row justify-content-start align-items-center gap-2">
+                        <button type="submit" class="btn btn-primary">Войти</button>
+                        <p class="m-0">Нет аккаунта? - <a href="{% url 'signup' %}">Создайте ее</a></p>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
